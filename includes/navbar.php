@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-inverse navbar-fixed-top animated flip" role="navigation">
+<nav class="navbar navbar-inverse navbar-fixed-top animated fadeIn" role="navigation">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -18,7 +18,7 @@
                     <a href="#" class="text-uppercase">Home</a>
                 </li>
                 <li>
-                    <a href="post.html" class="text-uppercase">Post</a>
+                    <a href="post.php" class="text-uppercase">Post</a>
                 </li>
                 <li>
                     <a href="#" class="text-uppercase">About</a>
