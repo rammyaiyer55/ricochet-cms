@@ -8,3 +8,10 @@ Administration or Control Panel:
    <li>Create, Edit, Publish, Archive articles</li>
    <li>Create, Edit, Publish, Archive press releases</li>
 </ul>
+<br><br>
+Connections:
+
+- DB_HOST : **localhost**
+- DB_USERNAME : _your-username_ (Default => "root")
+- DB_PASSWORD : _your-password_ (Default => " ")
+- DB_NAME : **ricochet-cms**  
