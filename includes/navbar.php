@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-inverse navbar-fixed-top animated fadeIn" role="navigation">
+<nav class="navbar navbar-inverse navbar-fixed-top animated zoomIn" role="navigation">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -14,18 +14,24 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
+
+                <!-- PHP for displaying the categories dynamically for the database -->
+                <?php 
+
+                    $query = "SELECT * FROM categories";
+                    $show_data_from_categories = mysqli_query($connection, $query);
+
+                    while ($row = mysqli_fetch_assoc($show_data_from_categories)) {
+                        $cat_title = $row['cat_title'];
+
+                ?>
+
                 <li>
-                    <a href="#" class="text-uppercase">Home</a>
+                    <a href="#" class="text-uppercase"><?php echo $cat_title; ?></a>
                 </li>
-                <li>
-                    <a href="post.php" class="text-uppercase">Post</a>
-                </li>
-                <li>
-                    <a href="#" class="text-uppercase">About</a>
-                </li>
-                <li>
-                    <a href="#" class="text-uppercase">Contact</a>
-                </li>
+
+                <?php } ?>
+
             </ul>
         </div>
         <!-- /.navbar-collapse -->
