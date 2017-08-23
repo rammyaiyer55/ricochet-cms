@@ -2,7 +2,7 @@
 
 	$db['db_host'] 		= 	"localhost";
 	$db['db_user'] 		= 	"root";
-	$db['db_password']  = 	"";
+	$db['db_password']  = 	"biju941997";
 	$db['db_name'] 		= 	"ricochet-cms";
 
 	foreach ($db as $key => $value) {

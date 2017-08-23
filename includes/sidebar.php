@@ -1,17 +1,20 @@
 
+
     <div class="col-md-4">
 
         <!-- Blog Search Well -->
         <div class="well">
             <h4>Blog Search</h4>
-            <div class="input-group" style="margin-top: 15px;">
-                <input type="text" class="form-control">
-                <span class="input-group-btn">
-                    <button class="btn btn-default" type="button">
-                        <span class="glyphicon glyphicon-search"></span>
-                    </button>
-                </span>
-            </div>
+            <form action="search.php" method="post">
+                <div class="input-group" style="margin-top: 15px;">
+                    <input type="text" name="search" class="form-control">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" name="submit" type="submit">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                </div>
+            </form>
             <!-- /.input-group -->
         </div>
 
