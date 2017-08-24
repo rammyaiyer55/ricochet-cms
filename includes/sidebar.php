@@ -47,32 +47,25 @@
         <div class="well">
             <h4 style="margin-bottom: 25px;">Blog Categories</h4>
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-12">
                     <ul class="list-unstyled">
-                        <li><a href="#">Category Name</a>
+                        <?php 
+
+                            $query = "SELECT * FROM categories";
+                            $show_data_from_categories = mysqli_query($connection, $query);
+
+                            while ($row = mysqli_fetch_assoc($show_data_from_categories)) {
+                                $cat_title = $row['cat_title'];
+
+                        ?>
+
+                        <li>
+                            <h5><a href="#"><?php echo $cat_title; ?></a></h5>
                         </li>
-                        <li><a href="#">Category Name</a>
-                        </li>
-                        <li><a href="#">Category Name</a>
-                        </li>
-                        <li><a href="#">Category Name</a>
-                        </li>
+
+                        <?php } ?>
                     </ul>
                 </div>
-                <!-- /.col-lg-6 -->
-                <div class="col-lg-6">
-                    <ul class="list-unstyled">
-                        <li><a href="#">Category Name</a>
-                        </li>
-                        <li><a href="#">Category Name</a>
-                        </li>
-                        <li><a href="#">Category Name</a>
-                        </li>
-                        <li><a href="#">Category Name</a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- /.col-lg-6 -->
             </div>
             <!-- /.row -->
         </div>
