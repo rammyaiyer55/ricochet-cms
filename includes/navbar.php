@@ -32,6 +32,10 @@
 
                 <?php } ?>
 
+                <li>
+                    <a href="admin" class="text-uppercase" style="color: #f5f5f5; padding: 7px 0px 0px 8px;"><button class="btn btn-primary" type="submit" style="margin: 0px;"> &nbsp;ADMIN</button></a>
+                </li>
+
             </ul>
         </div>
         <!-- /.navbar-collapse -->
