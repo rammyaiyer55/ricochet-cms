@@ -1,0 +1,89 @@
+html, body {
+	background: url(../images/bg1.jpg) center no-repeat;
+	height: 100%;
+	background-size: cover;
+}
+
+@media(max-width: 768px) {
+
+	#logo img {
+		width: 70% !important;
+		margin-bottom: 10px;
+	}
+
+	#counter .countdown {
+		font-size: 1.5em !important;
+		margin-top: 10px;
+	}
+
+	#icons .fa {
+		margin: 30px 12px 0px !important;
+		font-size: 3em !important;
+	}
+
+	.btn-primary {
+		margin-top: 20px;
+	}
+
+}
+
+#logo img {
+	padding-top: 20px;
+	width: 50%;
+}
+
+#intro p {
+	font-family: 'Lobster Two', cursive;
+	font-size: 1.6em;
+	color: white;
+	text-align: center;
+}
+
+#counter .countdown {
+	text-align: center;
+	color: white;
+	font-family: 'Bubblegum Sans', cursive;
+	font-size: 2em;
+}
+
+#icons {
+	text-align: center;
+	margin-top: 15px;
+}
+
+#icons .fa {
+	color: white;
+	margin: 15px 15px;
+	position: relative;
+	bottom: 0;
+	transition: all 0.2s ease-in-out;
+}
+
+#icons .facebook:hover {
+	color: #3b5998;
+	bottom: 5px;
+}
+
+#icons .github:hover {
+	color: #000000;
+	bottom: 5px;
+}
+
+#icons .instagram:hover {
+	color: #cd486b;
+	bottom: 5px;
+}
+
+#signup {
+	text-align: center;
+}
+
+#signup .form-inline {
+	display: block;
+}
+
+#signup .btn:hover {
+	background-color: #28a745;
+	border-color: #28a745;
+	cursor: pointer;
+}
