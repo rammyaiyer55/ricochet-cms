@@ -35,7 +35,15 @@
                         <a href=""><i class="fa fa-fw fa-bar-chart-o"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href=""><i class="fa fa-fw fa-table"></i> Posts</a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#posts"><i class="fa fa-fw fa-table"></i> Posts <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="posts" class="collapse">
+                            <li>
+                                <a href="#">View All Posts</a>
+                            </li>
+                            <li>
+                                <a href="#">Add Posts</a>
+                            </li>
+                        </ul>
                     </li>
                     <li>
                         <a href=""><i class="fa fa-fw fa-edit"></i> Categories</a>
