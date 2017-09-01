@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-inverse navbar-fixed-top animated zoomIn" role="navigation">
+<nav class="navbar navbar-inverse navbar-fixed-top animated bounceInDown" role="navigation">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -9,7 +9,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand text-uppercase" href="#">Ricochet CMS</a>
+            <a class="navbar-brand text-uppercase" href="index.php">Ricochet CMS</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -31,6 +31,10 @@
                 </li>
 
                 <?php } ?>
+
+                <li>
+                    <a href="admin" class="text-uppercase" style="color: #f5f5f5; padding: 7px 0px 0px 8px;"><button class="btn btn-primary" type="submit" style="margin: 0px;"> &nbsp;ADMIN</button></a>
+                </li>
 
             </ul>
         </div>

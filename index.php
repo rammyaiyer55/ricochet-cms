@@ -13,24 +13,44 @@
             <!-- Blog Entries Column -->
             <div class="col-md-8">
 
-                <h1 class="page-header">
-                    Page Heading
-                    <small>Secondary Text</small>
+                <!-- <h1 class="page-header"> -->
+                <h1>
+                    #Our-Blogs
+                    <small> &nbsp;Team Ricochet</small>
                 </h1>
 
+            <?php 
+
+                $query = "SELECT * FROM posts";
+                $show_data_from_posts = mysqli_query($connection, $query);
+
+                while ($row = mysqli_fetch_assoc($show_data_from_posts)) {
+                    
+                    $post_title     =   $row['post_title'];
+                    $post_author    =   $row['post_author'];
+                    $post_date      =   $row['post_date'];
+                    $post_image     =   $row['post_image'];
+                    $post_content   =   $row['post_content'];
+
+            ?>
+
+                <hr>
+                <hr>
                 <!-- First Blog Post -->
                 <h2>
-                    <a href="#">Blog Post Title</a>
+                    <a href="#"><?php echo $post_title; ?></a>
                 </h2>
                 <p class="lead">
-                    by <a href="index.php">Author Name</a>
+                    by <a href="index.php"><?php echo $post_author; ?></a>
                 </p>
-                <p><span class="glyphicon glyphicon-time"></span> Posted on Month Date, at Time</p>
+                <p><span class="glyphicon glyphicon-time"></span> <?php echo $post_date; ?></p>
                 <hr>
-                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+                <img class="img-responsive" src="images/<?php echo $post_image; ?>" alt="">
                 <hr>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, veritatis, tempora, necessitatibus inventore nisi quam quia repellat ut tempore laborum possimus eum dicta id animi corrupti debitis ipsum officiis rerum.</p><br>
+                <p><?php echo $post_content; ?></p><br>
                 <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+
+                <?php } ?>
 
                 <hr>
 
