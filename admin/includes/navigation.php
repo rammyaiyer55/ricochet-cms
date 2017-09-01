@@ -8,7 +8,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand">Admin &nbsp;Dashboard</a>
+                <a class="navbar-brand" href="index.php">Admin &nbsp;Dashboard</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -46,7 +46,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href=""><i class="fa fa-fw fa-edit"></i> Categories</a>
+                        <a href="categories.php"><i class="fa fa-fw fa-edit"></i> Categories</a>
                     </li>
                     <li>
                         <a href=""><i class="fa fa-fw fa-desktop"></i> Comments</a>
