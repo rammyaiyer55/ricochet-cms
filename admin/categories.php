@@ -36,6 +36,22 @@
 
 					if (isset($_POST['submit'])) {
 						// echo "<h4>Connection Established!</h4><br>";
+                      $add_cat_title = $_POST['cat_title'];
+
+                      if ($add_cat_title == "" || empty($add_cat_title)) {
+                      	echo "This field cannot be empty";
+                      }
+                      else {
+                      	$query  = "INSERT INTO categories(cat_title) " ;
+                        $query .= "VALUE ('$add_cat_title')";
+                        $add_connection = mysqli_query($connection , $query);
+
+                        if (!$add_connection) {
+                        	die("Error!" . mysqli_error($connection));
+                        }
+
+                      }         	     
+          
 
 					}
 
@@ -76,7 +92,7 @@
 						<!-- Edit Categories -->
 						<div class="col-lg-4">
 								<select class="form-control">
-									<option selected hidden>Select your option</option>
+									<option seected hidden>Select your option</option>
 									<option>Delete</option>
 									<option>Clone</option>
 								</select>
@@ -89,7 +105,7 @@
 					</div>
 					
 					<br/>
-					
+
 					<div class="row">
 						<div id="tabletitle">
 						<div class="table-responsive">
@@ -103,15 +119,30 @@
 									<th>Delete</th>
 								  </tr>
 								</thead>
+
+								 <?php 
+
+		                            $query = "SELECT * FROM categories";
+		                            $show_data_from_categories = mysqli_query($connection, $query);
+
+		                            while ($row = mysqli_fetch_assoc($show_data_from_categories)) {
+		                                $cat_title = $row['cat_title'];
+		                                $cat_id = $row['cat_id'];
+
+		                        ?>
+
 								<tbody>
 								  <tr>
 									<td><input type="checkbox" value=""></td>
-									<td>1</td>
-									<td>Brijesh</td>
+									<td><?php echo $cat_id; ?></td>
+									<td><?php echo $cat_title; ?></td>
 									<td><a href="#" id = "text-link">Edit</a></td>
 									<td><a href="#" id = "text-link">Delete</a></td>
 								  </tr>
 								</tbody>
+
+								<?php } ?>
+
 							  </table>
 						</div>
 						</div>
