@@ -1,5 +1,5 @@
 <?php include("../includes/db.php"); ?>
-<?php include("includes/header.php"); ?>
+<?php include("includes/admin_header.php"); ?>
 
     <div id="wrapper">
 
@@ -35,8 +35,20 @@
 					<?php 
 
 					if (isset($_POST['submit'])) {
-						// echo "<h4>Connection Established!</h4><br>";
+						$add_cat_title = mysqli_real_escape_string($connection, $_POST['cat_title']);
 
+						if ($add_cat_title == "" || empty($add_cat_title)) {
+							die("This field cannot be empty. Please try again! ");
+						}
+						else {
+							$query  = "INSERT INTO categories(cat_title) ";
+							$query .= "VALUE ('$add_cat_title')";
+
+							$add_categories_in_table = mysqli_query($connection, $query);
+							if (!$add_categories_in_table) {
+								die("Input cannot be added into categories. Sorry! " . mysqli_error($connection));
+							}
+						}
 					}
 
 					?>
@@ -50,16 +62,17 @@
 						<button type="submit" class="btn btn-primary" name="submit">ADD</button>
 					</form>
 
-					<br/>
-					<br/>
+					
 
-					<div id="editcategory">
-						<div class="form-group">
-							<h4>Update Category :</h4>
-							<input type="text" class="form-control">
-						</div>
-						<button type="submit" class="btn btn-primary" name="update">UPDATE</button>
-					</div>
+					<?php 
+
+						if (isset($_GET['edit'])) {
+
+							include("includes/update_categories.php");
+						
+						}
+
+					?>
 
 					<br/>
 					<br/>
@@ -104,13 +117,58 @@
 								  </tr>
 								</thead>
 								<tbody>
+
+								<?php 
+
+									$query = "SELECT * FROM categories";
+									$show_categories_in_table = mysqli_query($connection, $query);
+
+									if (!$show_categories_in_table) {
+										die("Query cannot be processed. Sorry!" . mysqli_error($connection));
+									}
+									else {
+
+										while ($row = mysqli_fetch_assoc($show_categories_in_table)) {
+
+											$table_cat_id 	 = $row['cat_id'];
+											$table_cat_title = $row['cat_title'];
+
+								?>
+
 								  <tr>
 									<td><input type="checkbox" value=""></td>
-									<td>1</td>
-									<td>Brijesh</td>
-									<td><a href="#" id = "text-link">Edit</a></td>
-									<td><a href="#" id = "text-link">Delete</a></td>
+									<td><?php echo $table_cat_id; ?></td>
+									<td><?php echo $table_cat_title; ?></td>
+									<td><a href="categories.php?edit=<?php echo $table_cat_id; ?>" id = "text-link">Edit</a></td>
+									<td><a href="categories.php?delete=<?php echo $table_cat_id; ?>" id = "text-link">Delete</a></td>
 								  </tr>
+
+								 <?php 
+
+								 		}
+									}
+
+								 ?>
+
+								 <?php 
+
+								 	if (isset($_GET['delete'])) {
+								 		
+								 		$delete_cat_id = $_GET['delete'];
+
+								 		$query = "DELETE FROM categories WHERE cat_id = '$delete_cat_id'";
+								 		$delete_category_from_table = mysqli_query($connection, $query);
+
+								 		header("Location: categories.php");
+
+								 		if (!$delete_category_from_table) {
+								 			die("Category cannot be deleted. Sorry! " . mysqli_error($connection));
+								 		}
+
+								 	}
+
+								 ?>
+
 								</tbody>
 							  </table>
 						</div>
@@ -134,14 +192,4 @@
             <!-- /.row -->
         </footer>
 		
-		
-		
-		    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-
-</body>
-
-</html>
+<?php include("includes/admin_footer.php") ?>
