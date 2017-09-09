@@ -26,7 +26,7 @@
 			
 		</div>
 		
-		<div class="well">
+		<div class="container-fluid">
 			<div class="row">
 				<!-- Category Column -->
 				<div class="col-lg-3">
@@ -66,28 +66,13 @@
 
 				</div>
 				
-				<div class="col-lg-2">
+				<div class="col-lg-1">
 					<!-- Just some spacing -->
 				</div>
 
-				<div class="col-lg-7">
+				<div class="col-lg-8">
+				
 					<br/>
-					<div class="row">
-						<!-- Edit Categories -->
-						<div class="col-lg-4">
-								<select class="form-control">
-									<option selected hidden>Select your option</option>
-									<option>Delete</option>
-									<option>Clone</option>
-								</select>
-							<br/>
-						</div>
-						<div class="col-lg-6">
-							<!-- Edit Categories -->
-							<button type="submit" class="btn btn-primary">APPLY</button>
-						</div>
-					</div>
-					
 					<br/>
 					
 					<div class="row">
