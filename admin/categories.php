@@ -18,7 +18,7 @@
                         </h1>
                         <ol class="breadcrumb">
                             <li class="active">
-                                <i class="fa fa-fw fa-edit"></i>  <a href="index.html">Categories</a>
+                                <i class="fa fa-fw fa-edit"></i>  <a>Categories</a>
                             </li>
                         </ol>
                 <!-- Category Main Title -->						
@@ -71,7 +71,7 @@
 				</div>
 
 				<div class="col-lg-8">
-				
+
 					<br/>
 					<br/>
 					
@@ -81,11 +81,11 @@
 							<table class="table table-hover table-bordered">
 								<thead>
 								  <tr>
-								  	<th>Select</th>
+								  	<th>SELECT</th>
 									<th>ID</th>
-									<th>Title</th>
-									<th>Edit</th>
-									<th>Delete</th>
+									<th>TITLE</th>
+									<th>EDIT</th>
+									<th>DELETE</th>
 								  </tr>
 								</thead>
 								<tbody>
