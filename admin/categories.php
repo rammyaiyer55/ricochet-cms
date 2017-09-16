@@ -1,5 +1,5 @@
 <?php include("../includes/db.php"); ?>
-<?php include("includes/header.php"); ?>
+<?php include("includes/admin_header.php"); ?>
 
     <div id="wrapper">
 
@@ -18,7 +18,7 @@
                         </h1>
                         <ol class="breadcrumb">
                             <li class="active">
-                                <i class="fa fa-fw fa-edit"></i>  <a href="index.html">Categories</a>
+                                <i class="fa fa-fw fa-edit"></i>  <a>Categories</a>
                             </li>
                         </ol>
                 <!-- Category Main Title -->						
@@ -26,7 +26,7 @@
 			
 		</div>
 		
-		<div class="well">
+		<div class="container-fluid">
 			<div class="row">
 				<!-- Category Column -->
 				<div class="col-lg-3">
@@ -34,26 +34,8 @@
 
 					<?php 
 
-					if (isset($_POST['submit'])) {
-						// echo "<h4>Connection Established!</h4><br>";
-                      $add_cat_title = $_POST['cat_title'];
-
-                      if ($add_cat_title == "" || empty($add_cat_title)) {
-                      	echo "This field cannot be empty";
-                      }
-                      else {
-                      	$query  = "INSERT INTO categories(cat_title) " ;
-                        $query .= "VALUE ('$add_cat_title')";
-                        $add_connection = mysqli_query($connection , $query);
-
-                        if (!$add_connection) {
-                        	die("Error!" . mysqli_error($connection));
-                        }
-
-                      }         	     
-          
-
-					}
+						// Function for inserting values into categories
+						insert_into_categories();
 
 					?>
 
@@ -66,83 +48,63 @@
 						<button type="submit" class="btn btn-primary" name="submit">ADD</button>
 					</form>
 
-					<br/>
-					<br/>
+					
 
-					<div id="editcategory">
-						<div class="form-group">
-							<h4>Update Category :</h4>
-							<input type="text" class="form-control">
-						</div>
-						<button type="submit" class="btn btn-primary" name="update">UPDATE</button>
-					</div>
+					<?php 
+
+						// Updating category
+						if (isset($_GET['edit'])) {
+
+							include("includes/update_categories.php");
+						
+						}
+
+					?>
 
 					<br/>
 					<br/>
 
 				</div>
 				
-				<div class="col-lg-2">
+				<div class="col-lg-1">
 					<!-- Just some spacing -->
 				</div>
 
-				<div class="col-lg-7">
-					<br/>
-					<div class="row">
-						<!-- Edit Categories -->
-						<div class="col-lg-4">
-								<select class="form-control">
-									<option seected hidden>Select your option</option>
-									<option>Delete</option>
-									<option>Clone</option>
-								</select>
-							<br/>
-						</div>
-						<div class="col-lg-6">
-							<!-- Edit Categories -->
-							<button type="submit" class="btn btn-primary">APPLY</button>
-						</div>
-					</div>
-					
-					<br/>
+				<div class="col-lg-8">
 
+					<br/>
+					<br/>
+					
 					<div class="row">
 						<div id="tabletitle">
 						<div class="table-responsive">
 							<table class="table table-hover table-bordered">
 								<thead>
 								  <tr>
-								  	<th>Select</th>
+								  	<th>SELECT</th>
 									<th>ID</th>
-									<th>Title</th>
-									<th>Edit</th>
-									<th>Delete</th>
+									<th>TITLE</th>
+									<th>EDIT</th>
+									<th>DELETE</th>
 								  </tr>
 								</thead>
+								<tbody>
+
+								<?php
+
+									// Function for displaying all the categories
+									show_all_data_from_categories();
+
+								?>
 
 								 <?php 
 
-		                            $query = "SELECT * FROM categories";
-		                            $show_data_from_categories = mysqli_query($connection, $query);
+								 	// Function for deleting category
+								 	delete_from_category();
 
-		                            while ($row = mysqli_fetch_assoc($show_data_from_categories)) {
-		                                $cat_title = $row['cat_title'];
-		                                $cat_id = $row['cat_id'];
+								 ?>
 
-		                        ?>
-
-								<tbody>
-								  <tr>
-									<td><input type="checkbox" value=""></td>
-									<td><?php echo $cat_id; ?></td>
-									<td><?php echo $cat_title; ?></td>
-									<td><a href="#" id = "text-link">Edit</a></td>
-									<td><a href="#" id = "text-link">Delete</a></td>
-								  </tr>
 								</tbody>
-
-								<?php } ?>
-
 							  </table>
 						</div>
 						</div>
@@ -165,14 +127,4 @@
             <!-- /.row -->
         </footer>
 		
-		
-		
-		    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-
-</body>
-
-</html>
+<?php include("includes/admin_footer.php") ?>

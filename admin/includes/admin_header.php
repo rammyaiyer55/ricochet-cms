@@ -1,3 +1,7 @@
+
+<?php include("functions.php"); ?>
+<?php ob_start(); ?>    <!-- Output Buffer -->
+
 <!DOCTYPE html>
 <html lang="en">
 
