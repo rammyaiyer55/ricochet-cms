@@ -72,4 +72,22 @@
 
 	}
 
+	function delete_from_posts() {
+
+		global $connection;
+
+		if (isset($_GET['delete'])) {
+						
+			$delete_post_id = $_GET['delete'];
+
+			$query = "DELETE FROM posts WHERE post_id = $delete_post_id";
+			$delete_query = mysqli_query($connection, $query); 
+			if (!$delete_query) {
+				die("Post cannot be deleted. Query failed! " . mysqli_error($connection));
+			}
+
+		}
+
+	}
+
 ?>

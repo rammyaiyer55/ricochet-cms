@@ -1,4 +1,11 @@
 				
+				<?php
+
+					// Function for deleting posts
+					delete_from_posts();
+
+				?>
+
 				<div class="table-responsive">
 					<table class="table table-hover table-bordered">
 						<thead>
@@ -11,6 +18,8 @@
 							<th>TAGS</th>
 							<th>COMMENTS</th>
 							<th>DATE</th>
+							<th>EDIT</th>
+							<th>DELETE</th>
 						</thead>
 						<tbody>
 							<?php 
@@ -40,6 +49,8 @@
 				                    echo "<td>$post_tags</td>";
 				                    echo "<td>$post_comment_count</td>";
 				                    echo "<td>$post_date </td>";
+				                    echo "<td><a href='posts.php?source=edit_post&p_id=$post_id' id='text-link'>Edit</td>";
+				                    echo "<td><a href='posts.php?delete=$post_id' id='text-link'>Delete</a>";
 				                    echo "</tr>";
 
 				                }

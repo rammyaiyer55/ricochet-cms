@@ -1,3 +1,4 @@
+	
 	<div class="col-lg-2">
 		<!-- Just some space -->
 	</div>
@@ -7,8 +8,8 @@
 
 			if(isset($_POST['publish'])) {
 	   
-	            $post_title         = mysqli_real_escape_string($connection, $_POST['title']);
-	            // $post_user         = $_POST['post_user'];
+	            $post_title			= mysqli_real_escape_string($connection, $_POST['title']);
+	            // $post_user       = $_POST['post_user'];
 	            $post_author        = mysqli_real_escape_string($connection, $_POST['author']);
 	            $post_category_id   = $_POST['post_category_id'];
 	            $post_status        = $_POST['post_status'];
@@ -23,7 +24,7 @@
 	            $post_comment_count = 4;
 
 	       
-	        	move_uploaded_file($post_image_temp, "../images/$post_image" );
+	        	move_uploaded_file($post_image_temp, "../images/$post_image");
 
 	        	$query  = "INSERT INTO posts(post_category_id, post_title, post_author, post_date, post_image, post_content, post_tags, post_comment_count, post_status) ";
 	        	$query .= "VALUES ($post_category_id, '$post_title', '$post_author', now(), '$post_image', '$post_content', '$post_tags', $post_comment_count, '$post_status')";
