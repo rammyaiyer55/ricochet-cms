@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.4
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 15, 2017 at 10:03 AM
--- Server version: 5.7.14
--- PHP Version: 5.6.25
+-- Generation Time: Nov 11, 2017 at 09:48 AM
+-- Server version: 10.1.26-MariaDB
+-- PHP Version: 7.1.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -44,10 +46,9 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`post_id`, `post_category_id`, `post_title`, `post_author`, `post_date`, `post_image`, `post_content`, `post_tags`, `post_comment_count`, `post_status`) VALUES
-(1, 1, 'HTML (Hypertext Markup Language)', 'Brijesh', '2017-08-13', 'html.jpg', 'HTML is the language used for creating web documents. It is not a programming language, but rather a language that identifies the meaning, purpose, and structure of text within a document. \r\nYou can easily understand the structure of the document because it is simple, and you are an intelligent human being who has read many documents in your life. But your web browser needs to understand the document in order to present it to you in an intelligent and meaningful way.', 'HTML, Brijesh, Web Development', 0, 'draft'),
-(2, 2, 'CSS (Cascading Style Sheet)', 'Jasmine', '2017-08-14', 'css.jpg', 'Cascading Stylesheets - or CSS - is the first technology you should start learning after HTML. Whereas HTML is used to define the structure and semantics of your content, CSS is used to style it and lay it out. So for example, you can use CSS to alter the font, color, size and spacing of your content, split it into multiple columns, or add animations and other decorative features.', 'CSS, Jasmine, Web Development', 0, 'draft'),
-(5, 3, 'Javascript', 'Uday', '2017-08-15', 'js.jpg', 'JavaScript is a programming language that adds interactivity to your website (for example: games, responses when buttons are pressed or data entered in forms, dynamic styling, animation). This article helps you get started with this exciting language and gives you an idea of what is possible.', 'Javascript, Uday, Web Development', 0, 'draft'),
-(6, 4, 'PHP (Hypertext Preprocessor)', 'Ashwathi', '2017-08-16', 'php.jpg', 'What distinguishes PHP from something like client-side JavaScript is that the code is executed on the server, generating HTML which is then sent to the client. The client would receive the results of running that script, but would not know what the underlying code was. You can even configure your web server to process all your HTML files with PHP, and then there\'s really no way that users can tell what you have up your sleeve.', 'PHP, Ashwathi, Web Development', 0, 'draft');
+(1, 4, 'Design', 'Brijesh', '2017-11-11', 'design.png', 'Design is the creation of a plan or convention for the construction of an object, system or measurable human interaction (as in architectural blueprints, engineering drawings, business processes, circuit diagrams, and sewing patterns). Design has different connotations in different fields (see design disciplines below). In some cases, the direct construction of an object (as in pottery, engineering, management, coding, and graphic design) is also considered to use design thinking.', 'Design, Brijesh', 4, 'draft'),
+(2, 1, 'Material Components', 'Brijesh', '2017-11-11', 'material.png', 'Design is the art of continuous problem solvingâ€”an active cycle of investigating and validating needs, crafting and developing ideas, and creating solutions. Over the course of its life, a digital product is shaped by many hands. The effects of this collaboration can be seen in the quality of a productâ€™s identity and implementation, as well as in the strength of the community it builds.\r\n\r\nWe created Material Design as a metaphor to rationalize design and implementation, establishing a shared language to help teams unite style, branding, interaction, and motion under a cohesive set of principles.\r\n\r\nWe believe a better design process yields better products, which is why weâ€™re expanding Material to be a system that supports the principles of good design and strengthens communication and productivity with new tools and inspiration. We hope these resources will help teams realize their greatest design potential, and weâ€™re eager to see the results.', 'CSS, Brijesh, Web Development, Material Components', 4, 'approved'),
+(3, 1, 'Laravel', 'John Doe', '2017-11-11', 'laravel.jpg', 'Laravel\'s versioning scheme maintains the following convention: paradigm.major.minor. Major framework releases are released every six months (February and August), while minor releases may be released as often as every week. Minor releases should never contain breaking changes.\r\n\r\nWhen referencing the Laravel framework or its components from your application or package, you should always use a version constraint such as 5.5.*, since major releases of Laravel do include breaking changes. However, we strive to always ensure you may update to a new major release in one day or less.\r\n\r\nParadigm shifting releases are separated by many years and represent fundamental shifts in the framework\'s architecture and conventions. Currently, there is no paradigm shifting release under development.', 'Laravel, Web Development, PHP Framework', 4, 'approved');
 
 --
 -- Indexes for dumped tables
@@ -67,7 +68,9 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `post_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `post_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

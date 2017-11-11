@@ -55,7 +55,7 @@
 
     		$query  = "UPDATE posts SET ";
     		$query .= "post_title = '$updated_post_title', ";
-    		// $query .= "post_category_id = '$updated_post_category_id', ";
+    		$query .= "post_category_id = '$updated_post_category_id', ";
     		$query .= "post_date = now(), ";
     		$query .= "post_author = '$updated_post_author', ";
     		$query .= "post_status = '$updated_post_status', ";
@@ -99,8 +99,9 @@
 							die("Query Failed! " . mysqli_error($connection));
 						}
 						while ($row = mysqli_fetch_assoc($show_categories_in_select_tag)) {
+							$category_id 	= $row['cat_id'];
 							$category_title = $row['cat_title'];
-							echo "<option>" . $category_title . "</option>";
+							echo "<option value='$category_id'>" . $category_title . "</option>";
 						}
 
 					?>
