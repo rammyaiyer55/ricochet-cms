@@ -55,12 +55,13 @@
                             $show_data_from_categories = mysqli_query($connection, $query);
 
                             while ($row = mysqli_fetch_assoc($show_data_from_categories)) {
+                                $cat_id    = $row['cat_id'];
                                 $cat_title = $row['cat_title'];
 
                         ?>
 
                         <li>
-                            <h5><a href="#"><?php echo $cat_title; ?></a></h5>
+                            <h5><a href="categories.php?cat_id=<?php echo $cat_id; ?>"><?php echo $cat_title; ?></a></h5>
                         </li>
 
                         <?php } ?>
