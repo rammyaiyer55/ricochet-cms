@@ -7,8 +7,8 @@ html, body {
 @media(max-width: 768px) {
 
 	#logo img {
-		width: 70% !important;
-		margin-bottom: 10px;
+		width: 85% !important;
+		margin-bottom: 20px;
 	}
 
 	#counter .countdown {
@@ -29,12 +29,19 @@ html, body {
 
 #logo img {
 	padding-top: 20px;
-	width: 50%;
+	width: 38%;
 }
 
 #intro p {
 	font-family: 'Lobster Two', cursive;
 	font-size: 1.6em;
+	color: white;
+	text-align: center;
+}
+
+#dev p {
+	font-family: 'Acme', cursive;
+	font-size: 1.2em;
 	color: white;
 	text-align: center;
 }
