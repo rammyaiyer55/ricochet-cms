@@ -31,7 +31,7 @@
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse" >
                 <ul class="nav navbar-nav side-nav" style="margin-top: 15px;">
-                    <li class="active">
+                    <li class="">
                         <a href=""><i class="fa fa-fw fa-bar-chart-o"></i> Dashboard</a>
                     </li>
                     <li>
