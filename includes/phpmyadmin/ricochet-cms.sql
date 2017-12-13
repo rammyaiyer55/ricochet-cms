@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 11, 2017 at 09:48 AM
+-- Generation Time: Dec 13, 2017 at 06:29 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -21,6 +21,52 @@ SET time_zone = "+00:00";
 --
 -- Database: `ricochet-cms`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categories`
+--
+
+CREATE TABLE `categories` (
+  `cat_id` int(3) NOT NULL,
+  `cat_title` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`cat_id`, `cat_title`) VALUES
+(1, 'Web Development'),
+(2, 'AI / ML'),
+(3, 'Android Development'),
+(4, 'Design');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comments`
+--
+
+CREATE TABLE `comments` (
+  `comment_id` int(3) NOT NULL,
+  `comment_post_id` int(3) NOT NULL,
+  `comment_author` varchar(255) NOT NULL,
+  `comment_email` varchar(255) NOT NULL,
+  `comment_content` text NOT NULL,
+  `comment_status` varchar(255) NOT NULL,
+  `comment_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`comment_id`, `comment_post_id`, `comment_author`, `comment_email`, `comment_content`, `comment_status`, `comment_date`) VALUES
+(1, 1, 'John Doe', 'johndoe@ricochetcms.com', 'Hello! This post is awesome...', 'Approved', '2017-11-11'),
+(3, 2, 'Hailee Steinfeld', 'hailee@ricochetcms.com', 'Dinner tonight?', 'Unapproved', '2017-12-05'),
+(4, 3, 'Cindy', 'cindy@ricochetcms.com', 'Delete comments works perfect!', 'Approved', '2017-12-09');
 
 -- --------------------------------------------------------
 
@@ -55,6 +101,18 @@ INSERT INTO `posts` (`post_id`, `post_category_id`, `post_title`, `post_author`,
 --
 
 --
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`cat_id`);
+
+--
+-- Indexes for table `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`comment_id`);
+
+--
 -- Indexes for table `posts`
 --
 ALTER TABLE `posts`
@@ -63,6 +121,18 @@ ALTER TABLE `posts`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `cat_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `comment_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `posts`
