@@ -85,7 +85,7 @@
 
                 <!-- Comments Form -->
                 <div class="well">
-                    <h4>Leave a Comment:</h4>
+                    <h4 class="media media-heading">Want to leave a comment? &nbsp; <small>{Comment will be approved within 24 hours}</small></h4>
                     <hr>
                     <form role="form" action="" method="post">
                         <div class="form-group">
@@ -108,46 +108,42 @@
 
                 <!-- Posted Comments -->
 
+                <?php 
+
+                    $query  = "SELECT * FROM comments WHERE comment_post_id = $caught_id ";
+                    $query .= "AND comment_status = 'approved' ";
+                    $query .= "ORDER BY comment_id DESC";
+                    $display_comment_query = mysqli_query($connection, $query);
+                    if (!$display_comment_query) {
+                        die('Sorry! Query failed. ' . mysqli_error($connection));
+                    }
+                    while($row = mysqli_fetch_assoc($display_comment_query)) {
+                        $comment_date       =  $row['comment_date'];
+                        $comment_author     =  $row['comment_author'];
+                        $comment_content    =  $row['comment_content'];
+
+                ?>
+
                 <!-- Comment -->
                 <div class="media">
                     <a class="pull-left" href="#">
                         <img class="media-object" src="http://placehold.it/64x64" alt="">
                     </a>
                     <div class="media-body">
-                        <h4 class="media-heading">First comment
-                            <small>&nbsp; Month Date, at Time</small>
+                        <h4 class="media-heading"><strong><?php echo "$comment_author"; ?></strong>
+                            <small>@ <?php echo "$comment_date"; ?></small>
                         </h4>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                        <?php echo "$comment_content"; ?>
                     </div>
                 </div>
+
+                <?php
+
+                    }
+
+                ?>
 
                 <br>
-
-                <!-- Comment -->
-                <div class="media" style="margin-bottom: 40px;">
-                    <a class="pull-left" href="#">
-                        <img class="media-object" src="http://placehold.it/64x64" alt="">
-                    </a>
-                    <div class="media-body">
-                        <h4 class="media-heading">Second comment
-                            <small>&nbsp; Month Date, at Time</small>
-                        </h4>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                        <!-- Nested Comment -->
-                        <div class="media">
-                            <a class="pull-left" href="#">
-                                <img class="media-object" src="http://placehold.it/64x64" alt="">
-                            </a>
-                            <div class="media-body">
-                                <h4 class="media-heading">Nested comment
-                                    <small>&nbsp; Month Date, at Time</small>
-                                </h4>
-                                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                            </div>
-                        </div>
-                        <!-- End Nested Comment -->
-                    </div>
-                </div>
 
                 <hr>
 
