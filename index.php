@@ -31,7 +31,12 @@
                     $post_author    =   $row['post_author'];
                     $post_date      =   $row['post_date'];
                     $post_image     =   $row['post_image'];
+                    $post_status    =   $row['post_status'];
                     $post_content   =   substr($row['post_content'], 0, 500);
+
+                    if ($post_status !== 'published') {
+                        echo "<br><hr><h3> Oh Snap!&nbsp; No Result Found.</h3>";
+                    } else {
 
             ?>
 
@@ -51,7 +56,12 @@
                 <p><?php echo $post_content; ?></p><br>
                 <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 
-                <?php } ?>
+                <?php
+
+                        }
+                    }
+
+                ?>
 
                 <hr>
 
