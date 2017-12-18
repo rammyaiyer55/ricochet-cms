@@ -7,7 +7,7 @@
 							<th>COMMENT</th>
 							<th>EMAIL</th>
 							<th>STATUS</th>
-							<th>IN RESPONSE TO</th>
+							<th>POST</th>
 							<th>DATE</th>
 							<th>APPROVE</th>
 							<th>UNAPPROVE</th>
