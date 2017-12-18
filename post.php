@@ -79,6 +79,11 @@
                             die('Sorry! Query failed. ' . mysqli_error($connection));
                         }
 
+                        // Update comment count
+                        $query  = "UPDATE posts SET post_comment_count = post_comment_count + 1 ";
+                        $query .= "WHERE post_id = $caught_id";
+                        $update_comment_count = mysqli_query($connection, $query);
+
                     }
 
                 ?>
