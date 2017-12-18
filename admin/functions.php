@@ -86,6 +86,8 @@
 				die("Post cannot be deleted. Query failed! " . mysqli_error($connection));
 			}
 
+			// header("Location: view_posts.php");
+
 		}
 
 	}
