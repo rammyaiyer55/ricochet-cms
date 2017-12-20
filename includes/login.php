@@ -15,8 +15,21 @@
 
 		while ($row = mysqli_fetch_assoc($show_user_info)) {
 			
-			echo $user_id = $row['user_id'];
+			$db_user_id 		=  $row['user_id'];
+			$db_username 		=  $row['username'];
+			$db_user_firstname  =  $row['user_firstname'];
+			$db_user_lastname 	=  $row['user_lastname'];
+			$db_user_password 	=  $row['user_password'];
+			$db_user_role 		=  $row['user_role'];
 
+		}
+
+		if ($username !== $db_username && $password !== $db_user_password) {
+			header("Location: ../index.php");
+		} elseif ($username == $db_username && $password == $db_user_password) {
+			header("Location: ../admin");
+		} else {
+			header("Location: ../index.php");
 		}
 
 	}
