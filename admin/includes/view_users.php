@@ -62,8 +62,8 @@
 				                    }
 				                    */
 
-				                    echo "<td><a href='comments.php?approve=' id='text-link'>Approve</a>";
-				                    echo "<td><a href='comments.php?unapprove=' id='text-link'>Unapprove</a>";
+				                    echo "<td><a href='users.php?change_to_admin=$user_id' id='text-link'>Admin</a>";
+				                    echo "<td><a href='users.php?change_to_subscriber=$user_id' id='text-link'>Subscriber</a>";
 				                    echo "<td><a href='users.php?delete=$user_id' id='text-link'>Delete</a>";
 				                    echo "</tr>";
 
@@ -71,31 +71,31 @@
 
 							?>
 
-							<!-- Approve -->
+							<!-- Change user to admin -->
 							<?php 
 
-								if (isset($_GET['approve'])) {
+								if (isset($_GET['change_to_admin'])) {
 									
-									$approve_comment_id = $_GET['approve'];
+									$admin_user_id = $_GET['change_to_admin'];
 
-									$query = "UPDATE comments SET comment_status = 'Approved' WHERE comment_id = $approve_comment_id";
-									$approve_comment_query = mysqli_query($connection, $query);
-									header("Location: comments.php");
+									$query = "UPDATE users SET user_role = 'Admin' WHERE user_id = $admin_user_id";
+									$admin_user_query = mysqli_query($connection, $query);
+									header("Location: users.php");
 
 								}
 
 							?>
 
-							<!-- Unpprove -->
+							<!-- Change user to subscriber -->
 							<?php 
 
-								if (isset($_GET['unapprove'])) {
+								if (isset($_GET['change_to_subscriber'])) {
 									
-									$unapprove_comment_id = $_GET['unapprove'];
+									$subscriber_user_id = $_GET['change_to_subscriber'];
 
-									$query = "UPDATE comments SET comment_status = 'Unapproved' WHERE comment_id = $unapprove_comment_id";
-									$unapprove_comment_query = mysqli_query($connection, $query);
-									header("Location: comments.php");
+									$query = "UPDATE users SET user_role = 'Subscriber' WHERE user_id = $subscriber_user_id";
+									$subscriber_user_query = mysqli_query($connection, $query);
+									header("Location: users.php");
 
 								}
 
