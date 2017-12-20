@@ -1,75 +1,51 @@
-		
+	
 	<?php 
 
-		if (isset($_GET['p_id'])) {
-			$post_id = $_GET['p_id'];
+		if (isset($_GET['edit_user'])) {
+			$edit_user_id = $_GET['edit_user'];
+
+			$query = "SELECT * FROM users WHERE user_id = $edit_user_id";
+	        $show_data_of_user = mysqli_query($connection, $query);
+
+	        while ($row = mysqli_fetch_assoc($show_data_of_user)) {
+	            
+	            $user_id  		=  $row['user_id'];
+	            $username  		=  $row['username'];
+	            $user_password  =  $row['user_password'];
+	            $user_firstname =  $row['user_firstname'];
+	            $user_lastname  =  $row['user_lastname'];
+	            $user_email  	=  $row['user_email'];
+	            $user_image  	=  $row['user_image'];
+	            $user_role  	=  $row['user_role'];
+	        }
+
+	        if (isset($_POST['edit_user'])) {
+
+	        	$user_firstname  	= mysqli_real_escape_string($connection, $_POST['user_firstname']);
+	            $user_lastname  	= mysqli_real_escape_string($connection, $_POST['user_lastname']);
+	            $username  			= mysqli_real_escape_string($connection, $_POST['username']);
+	            $user_email  		= $_POST['user_email'];
+	            $user_password  	= $_POST['user_password'];
+	            $user_role  		= $_POST['user_role'];
+
+	        	$query  = "UPDATE users SET ";
+	    		$query .= "username = '$username', ";
+	    		$query .= "user_password = '$user_password', ";
+	    		$query .= "user_firstname = '$user_firstname', ";
+	    		$query .= "user_lastname = '$user_lastname', ";
+	    		$query .= "user_email = '$user_email', ";
+	    		$query .= "user_role = '$user_role' ";
+	    		// $query .= "user_image = '$user_image' ";
+	    		$query .= "WHERE user_id = '$edit_user_id'";
+
+	    		$update_user_query = mysqli_query($connection, $query);
+	    		if (!$update_user_query) {
+	    			die("Query Failed! " . mysqli_error($connection));
+	    		}
+
+	        }
+
 		}
-
-		$query = "SELECT * FROM posts WHERE post_id = $post_id";
-        $show_data_from_posts = mysqli_query($connection, $query);
-
-        while ($row = mysqli_fetch_assoc($show_data_from_posts)) {
-            
-            $post_id 			 =  $row['post_id'];
-            $post_title     	 =  $row['post_title'];
-            $post_author    	 =  $row['post_author'];
-            $post_category_id	 =  $row['post_category_id'];
-            $post_date      	 =  $row['post_date'];
-            $post_image     	 =  $row['post_image'];
-            $post_content    	 =  $row['post_content'];
-            $post_tags	    	 =  $row['post_tags'];
-            $post_status    	 =  $row['post_status'];
-            $post_comment_count  =  $row['post_comment_count'];
-
-        }
-
-        if (isset($_POST['update'])) {
-        	
-        	$updated_post_title			=	mysqli_real_escape_string($connection, $_POST['title']);
-        	$updated_post_category_id	=	$_POST['post_category_id'];
-        	$updated_post_author		=	mysqli_real_escape_string($connection, $_POST['author']);
-        	$updated_post_status		=	$_POST['post_status'];
-
-        	$updated_post_image			=	$_FILES['image']['name'];
-        	$updated_post_image_temp	=	$_FILES['image']['tmp_name'];
-
-        	$updated_post_tags			=	mysqli_real_escape_string($connection, $_POST['post_tags']);
-        	$updated_post_content		=	mysqli_real_escape_string($connection, $_POST['post_content']);
-
-        	move_uploaded_file($updated_post_image_temp, "../images/$post_image");
-
-        	if (empty($post_image)) {
-        		
-        		$query = "SELECT * FROM posts WHERE post_id = $post_id";
-        		$select_image = mysqli_query($connection, $query);
-
-        		if (!$select_image) {
-        			die("Query Failed! " . mysqli_error($connection));
-        		}
-
-        		while ($row = mysqli_fetch_array($select_image)) {
-        			$post_image = $row['post_image'];
-        		}
-
-        	}
-
-    		$query  = "UPDATE posts SET ";
-    		$query .= "post_title = '$updated_post_title', ";
-    		$query .= "post_category_id = '$updated_post_category_id', ";
-    		$query .= "post_date = now(), ";
-    		$query .= "post_author = '$updated_post_author', ";
-    		$query .= "post_status = '$updated_post_status', ";
-    		$query .= "post_tags = '$updated_post_tags', ";
-    		$query .= "post_content = '$updated_post_content', ";
-    		$query .= "post_image = '$updated_post_image' ";
-    		$query .= "WHERE post_id = '$post_id'";
-
-    		$update_query = mysqli_query($connection, $query);
-    		if (!$update_query) {
-    			die("Query Failed! " . mysqli_error($connection));
-    		}
-
-        }
 
 	?>
 
@@ -80,28 +56,55 @@
 
 		<form action="" method="post" enctype="multipart/form-data">
 
-			<div class="form-group">
-				<label for="post-title">Post Title: &nbsp;</label>
-				<input type="text" class="form-control" value="<?php echo $post_title; ?>" name="title" id="post-title">
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="form-group">
+						<label for="first-name">First Name: &nbsp;</label>
+						<input type="text" value="<?php echo $user_firstname; ?>" class="form-control" name="user_firstname" id="first-name">
+					</div>
+				</div>
+
+				<div class="col-lg-6">
+					<div class="form-group">
+						<label for="last-name">Last Name: &nbsp;</label>
+						<input type="text" value="<?php echo $user_lastname; ?>" class="form-control" name="user_lastname" id="last-name">
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="form-group">
+						<label for="username">Username: &nbsp;</label>
+						<input type="text" value="<?php echo $username; ?>" class="form-control" name="username" id="username">
+					</div>
+				</div>
+
+				<div class="col-lg-6">
+					<div class="form-group">
+						<label for="email">Email: &nbsp;</label>
+						<input type="email" value="<?php echo $user_email; ?>" class="form-control" name="user_email" id="email">
+					</div>
+				</div>
 			</div>
 
 			<div class="form-group">
-				<label for="post-category">Category: &nbsp;</label>
-				<select name="post_category_id" id="post-category">
+				<label for="password">Password: &nbsp;</label>
+				<input type="password" value="<?php echo $user_password; ?>" class="form-control" name="user_password" id="password">
+			</div>
 
-					<option selected hidden>Select</option>
+			<div class="form-group" style="margin-top: 25px;">
+				<label for="user-role">Role: &nbsp;</label>
+				<select name="user_role" id="user-role">
 
 					<?php 
 
-						$query = "SELECT * FROM categories";
-						$show_categories_in_select_tag = mysqli_query($connection, $query);
-						if (!$show_categories_in_select_tag) {
-							die("Query Failed! " . mysqli_error($connection));
-						}
-						while ($row = mysqli_fetch_assoc($show_categories_in_select_tag)) {
-							$category_id 	= $row['cat_id'];
-							$category_title = $row['cat_title'];
-							echo "<option value='$category_id'>" . $category_title . "</option>";
+						echo "<option>$user_role</option>";
+
+						if ($user_role == 'Admin') {
+							echo "<option value='Subscriber'>Subscriber</option>";
+						} else {
+							echo "<option value='Admin'>Admin</option>";
 						}
 
 					?>
@@ -109,49 +112,13 @@
 				</select>
 			</div>
 
-			<!-- <div class="form-group">
-				<label for="users">Users: &nbsp;</label>
-				<select name="post_user" id="">
-					<option value=''></option>
-				</select>
-			</div> -->
-
 			<div class="form-group">
-				<label for="post-author">Post Author: &nbsp;</label>
-				<input type="text" class="form-control" value="<?php echo $post_author; ?>" name="author" id="post-author">
+				<label for="user-image">Image: &nbsp;</label>
+				<input type="file" name="image" id="user-image">
 			</div>
 
-			<div class="form-group">
-				<label for="post-status">Post Status: &nbsp;</label>
-				<select name="post_status" id="post-status">
-
-					<?php 
-
-						echo "<option>" . $post_status . "</option>";
-
-					?>
-
-				</select>
-			</div>
-
-			<div class="form-group">
-				<label for="post-image">Post Image: &nbsp;</label><br>
-				<img src="../images/<?php echo $post_image; ?>" width="200" class="img-thumbnail" style="margin-bottom: 10px;">
-				<br><input type="file" name="image" id="post-image">
-			</div>
-
-			<div class="form-group">
-				<label for="post-tags">Post Tags: &nbsp;</label>
-				<input type="text" class="form-control" value="<?php echo $post_tags; ?>" name="post_tags" id="post-tags">
-			</div>
-
-			<div class="form-group">
-				<label for="post-content">Post Content: &nbsp;</label>
-				<textarea class="form-control" name="post_content" id="post-content" rows="10" style="resize: none;"><?php echo $post_content; ?></textarea>
-			</div>
-
-			<div class="form-group">
-				<input class="btn btn-primary" type="submit" name="update" value="UPDATE">
+			<div class="form-group"  style="margin-top: 30px;">
+				<input class="btn btn-primary" type="submit" name="edit_user" value="EDIT USER">
 			</div>
 
 		</form>

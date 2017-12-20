@@ -8,9 +8,9 @@
 							<th>LAST NAME</th>
 							<th>EMAIL</th>
 							<th>ROLE</th>
-							<th></th>
-							<th></th>
-							<th></th>
+							<th colspan="2">CHANGE ROLES</th>
+							<th>EDIT</th>
+							<th>DELETE</th>
 						</thead>
 						<tbody>
 							<?php 
@@ -64,6 +64,7 @@
 
 				                    echo "<td><a href='users.php?change_to_admin=$user_id' id='text-link'>Admin</a>";
 				                    echo "<td><a href='users.php?change_to_subscriber=$user_id' id='text-link'>Subscriber</a>";
+				                    echo "<td><a href='users.php?source=edit_user&edit_user=$user_id' id='text-link'>Edit</a>";
 				                    echo "<td><a href='users.php?delete=$user_id' id='text-link'>Delete</a>";
 				                    echo "</tr>";
 
