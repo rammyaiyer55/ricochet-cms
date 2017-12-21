@@ -1,6 +1,17 @@
 
 <?php include("functions.php"); ?>
 <?php ob_start(); ?>    <!-- Output Buffer -->
+<?php session_start(); ?>
+
+<?php 
+
+    if (!isset($_SESSION['user_role'])) {
+            
+        header("Location: ../index.php");
+
+    }
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
