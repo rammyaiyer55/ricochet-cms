@@ -1,4 +1,4 @@
-
+<?php include("../includes/db.php"); ?>
 <?php include("functions.php"); ?>
 <?php ob_start(); ?>    <!-- Output Buffer -->
 <?php session_start(); ?>

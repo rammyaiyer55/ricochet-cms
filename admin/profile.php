@@ -1,37 +1,5 @@
-<?php include("../includes/db.php"); ?>
+
 <?php include("includes/admin_header.php"); ?>
-
-<?php 
-
-	if (isset($_POST['edit_user'])) {
-
-		$logged_in_user = $_SESSION['username'];
-
-    	$user_firstname  	= mysqli_real_escape_string($connection, $_POST['user_firstname']);
-        $user_lastname  	= mysqli_real_escape_string($connection, $_POST['user_lastname']);
-        $username  			= mysqli_real_escape_string($connection, $_POST['username']);
-        $user_email  		= $_POST['user_email'];
-        $user_password  	= $_POST['user_password'];
-        $user_role  		= $_POST['user_role'];
-
-    	$query  = "UPDATE users SET ";
-		$query .= "username = '$username', ";
-		$query .= "user_password = '$user_password', ";
-		$query .= "user_firstname = '$user_firstname', ";
-		$query .= "user_lastname = '$user_lastname', ";
-		$query .= "user_email = '$user_email', ";
-		$query .= "user_role = '$user_role' ";
-		// $query .= "user_image = '$user_image' ";
-		$query .= "WHERE username = '$logged_in_user'";
-
-		$update_user_query = mysqli_query($connection, $query);
-		if (!$update_user_query) {
-			die("Query Failed! " . mysqli_error($connection));
-		}
-
-    }
-
-?>
 
 <?php 
 
@@ -57,6 +25,34 @@
 	        $user_role  	=  $row['user_role'];
 
 		}
+
+		if (isset($_POST['edit_user'])) {
+
+			$logged_in_user = $_SESSION['username'];
+
+	    	$user_firstname  	= mysqli_real_escape_string($connection, $_POST['user_firstname']);
+	        $user_lastname  	= mysqli_real_escape_string($connection, $_POST['user_lastname']);
+	        $username  			= mysqli_real_escape_string($connection, $_POST['username']);
+	        $user_email  		= $_POST['user_email'];
+	        $user_password  	= $_POST['user_password'];
+	        $user_role  		= $_POST['user_role'];
+
+	    	$query  = "UPDATE users SET ";
+			$query .= "username = '$username', ";
+			$query .= "user_password = '$user_password', ";
+			$query .= "user_firstname = '$user_firstname', ";
+			$query .= "user_lastname = '$user_lastname', ";
+			$query .= "user_email = '$user_email', ";
+			$query .= "user_role = '$user_role' ";
+			// $query .= "user_image = '$user_image' ";
+			$query .= "WHERE username = '$logged_in_user'";
+
+			$update_user_query = mysqli_query($connection, $query);
+			if (!$update_user_query) {
+				die("Query Failed! " . mysqli_error($connection));
+			}
+
+	    }
 
 	}
 
