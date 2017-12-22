@@ -152,6 +152,88 @@
                 </div>
                 <!-- /.row -->
 
+                <br><br>
+
+                <?php 
+
+                    // Draft posts
+                    $query = "SELECT * FROM posts WHERE post_status = 'draft'";
+                    $select_draft_posts = mysqli_query($connection, $query);
+                    $draft_post_count = mysqli_num_rows($select_draft_posts);
+
+                    // Unapproved comments
+                    $query = "SELECT * FROM comments WHERE comment_status = 'Unapproved'";
+                    $select_unapproved_comments = mysqli_query($connection, $query);
+                    $unapproved_comment_count = mysqli_num_rows($select_unapproved_comments);
+
+                    // User role
+                    $query = "SELECT * FROM users WHERE user_role = 'Subscriber'";
+                    $select_subscribed_users = mysqli_query($connection, $query);
+                    $subscribed_user_count = mysqli_num_rows($select_subscribed_users);
+
+                ?>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                    <script type="text/javascript">
+                      google.charts.load('current', {'packages':['bar']});
+                      google.charts.setOnLoadCallback(drawChart);
+
+                      function drawChart() {
+                        var data = google.visualization.arrayToDataTable([
+
+                        ['Data', 'Count'],
+
+
+                        /* Method 1 */
+
+                        // <?php 
+
+                        //     $element_text  =  ['Active Posts', 'Comments', 'Users', 'Categories' ];
+                        //     $element_count =  ['$post_count', '$comment_count', '$user_count', '$category_count' ];
+
+                        //     for($i = 0; $i < 4; $i++) {
+
+                        //         echo "['{$element_text[$i]}'" . "," . "{$element_count[$i]}],";
+
+                        //     }
+
+                        // ?>
+
+                        // ['2014', 1000],
+
+
+                        /* Method 2 */
+
+                        ["Posts", <?php echo $post_count; ?>],
+                        ["Draft Posts", <?php echo $draft_post_count; ?>],
+                        ["Comments", <?php echo $comment_count; ?>],
+                        ["Unapproved Comments", <?php echo $unapproved_comment_count; ?>],
+                        ["Users", <?php echo $user_count; ?>],
+                        ["Subscribed Users", <?php echo $subscribed_user_count; ?>],
+                        ["Categories", <?php echo $category_count; ?>]
+
+                        ]);
+
+                        var options = {
+                          chart: {
+                            title: '',
+                            subtitle: '',
+                          }
+                        };
+
+                        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+                        chart.draw(data, google.charts.Bar.convertOptions(options));
+                      }
+                    </script>
+
+                    <div id="columnchart_material" style="width: 'auto'; height: 500px;"></div>
+
+                    <hr id="hr-style">
+
+                </div>
+
             </div>
             <!-- /.container-fluid -->
 

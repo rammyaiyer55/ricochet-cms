@@ -41,6 +41,9 @@
     <!-- Google Fonts CDN -->
     <link href="https://fonts.googleapis.com/css?family=Roboto|Ubuntu:400,700" rel="stylesheet">
 
+    <!-- Google Charts CDN -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
 </head>
 
 <body>
