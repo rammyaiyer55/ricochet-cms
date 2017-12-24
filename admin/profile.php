@@ -30,20 +30,20 @@
 
 			$logged_in_user = $_SESSION['username'];
 
-	    	$user_firstname  	= mysqli_real_escape_string($connection, $_POST['user_firstname']);
-	        $user_lastname  	= mysqli_real_escape_string($connection, $_POST['user_lastname']);
-	        $username  			= mysqli_real_escape_string($connection, $_POST['username']);
-	        $user_email  		= $_POST['user_email'];
-	        $user_password  	= $_POST['user_password'];
-	        $user_role  		= $_POST['user_role'];
+	    	$post_user_firstname  	= mysqli_real_escape_string($connection, $_POST['user_firstname']);
+	        $post_user_lastname  	= mysqli_real_escape_string($connection, $_POST['user_lastname']);
+	        $post_username  			= mysqli_real_escape_string($connection, $_POST['username']);
+	        $post_user_email  		= $_POST['user_email'];
+	        $post_user_password  	= $_POST['user_password'];
+	        $post_user_role  		= $_POST['user_role'];
 
 	    	$query  = "UPDATE users SET ";
-			$query .= "username = '$username', ";
-			$query .= "user_password = '$user_password', ";
-			$query .= "user_firstname = '$user_firstname', ";
-			$query .= "user_lastname = '$user_lastname', ";
-			$query .= "user_email = '$user_email', ";
-			$query .= "user_role = '$user_role' ";
+			$query .= "username = '$post_username', ";
+			$query .= "user_password = '$post_user_password', ";
+			$query .= "user_firstname = '$post_user_firstname', ";
+			$query .= "user_lastname = '$post_user_lastname', ";
+			$query .= "user_email = '$post_user_email', ";
+			$query .= "user_role = '$post_user_role' ";
 			// $query .= "user_image = '$user_image' ";
 			$query .= "WHERE username = '$logged_in_user'";
 
@@ -51,7 +51,8 @@
 			if (!$update_user_query) {
 				die("Query Failed! " . mysqli_error($connection));
 			}
-
+			session_regenerate_id();
+			$_SESSION['username'] = $post_username;
 	    }
 
 	}
