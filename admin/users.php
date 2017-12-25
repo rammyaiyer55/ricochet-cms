@@ -13,12 +13,24 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            All Posts
+                            Users
                             <!-- <small> &nbsp;Subheading</small> -->
                         </h1>
                         <ol class="breadcrumb">
                             <li class="active">
-                                <i class="fa fa-fw fa-edit"></i>  <a>View All Posts</a>
+                                
+                            	<?php 
+
+                            		if (isset($_GET['source']) == 'add_user') {
+                            			echo "<i class='fa fa-fw fa-edit'></i>  <a>Add User</a>";
+                            		} else {
+
+                            			echo "<i class='fa fa-fw fa-edit'></i>  <a>View All Users</a>";
+
+                            		}
+
+                            	?>
+
                             </li>
                         </ol>
                 <!-- Category Main Title -->						

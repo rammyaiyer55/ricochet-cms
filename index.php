@@ -21,7 +21,7 @@
 
             <?php 
 
-                $query = "SELECT * FROM posts";
+                $query = "SELECT * FROM posts WHERE post_status = 'published'";
                 $show_data_from_posts = mysqli_query($connection, $query);
 
                 while ($row = mysqli_fetch_assoc($show_data_from_posts)) {
@@ -33,10 +33,6 @@
                     $post_image     =   $row['post_image'];
                     $post_status    =   $row['post_status'];
                     $post_content   =   substr($row['post_content'], 0, 500);
-
-                    if ($post_status !== 'published') {
-                        echo "<br><hr><h3> Oh Snap!&nbsp; No Result Found.</h3>";
-                    } else {
 
             ?>
 
@@ -58,7 +54,6 @@
 
                 <?php
 
-                        }
                     }
 
                 ?>
