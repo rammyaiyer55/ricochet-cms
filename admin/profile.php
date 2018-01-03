@@ -51,6 +51,7 @@
 			if (!$update_user_query) {
 				die("Query Failed! " . mysqli_error($connection));
 			}
+			// Regenerates the SESSION value immediately after update
 			session_regenerate_id();
 			$_SESSION['username'] = $post_username;
 	    }
