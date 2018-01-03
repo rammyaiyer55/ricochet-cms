@@ -44,6 +44,12 @@
     <!-- Google Charts CDN -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
+    <!-- TinyMCE WYSIWYG editor -->
+    <script type="text/javascript" src="js/tinymce/tinymce.min.js"></script>
+
+    <!-- Custom Script for TinyMCE editor -->
+    <script type="text/javascript" src="js/scripts.js"></script>
+
 </head>
 
 <body>
