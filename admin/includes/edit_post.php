@@ -129,6 +129,12 @@
 
 						echo "<option>" . $post_status . "</option>";
 
+						if ($post_status == 'published') {
+							echo "<option value='draft'>Draft</option>";
+						} else {
+							echo "<option value='published'>Published</option>";
+						}
+
 					?>
 
 				</select>

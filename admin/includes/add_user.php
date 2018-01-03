@@ -29,6 +29,10 @@
 
 	        	if (!$create_user_query) {
 	        		die("User not added. Sorry! " . mysqli_error($connection));
+	        	} else {
+	        		echo "<div class='alert alert-success' role='alert'>
+  							Success! You can now <a href='users.php' class='alert-link'>view the user here</a>.
+						  </div>";
 	        	}
 
 	        }
