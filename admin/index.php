@@ -154,7 +154,12 @@
 
                 <br><br>
 
-                <?php 
+                <?php
+
+                    // Active posts
+                    $query = "SELECT * FROM posts WHERE post_status = 'published'";
+                    $select_published_posts = mysqli_query($connection, $query);
+                    $published_post_count = mysqli_num_rows($select_published_posts);
 
                     // Draft posts
                     $query = "SELECT * FROM posts WHERE post_status = 'draft'";
@@ -206,6 +211,7 @@
                         /* Method 2 */
 
                         ["Posts", <?php echo $post_count; ?>],
+                        ["Active Posts", <?php echo $published_post_count; ?>],
                         ["Draft Posts", <?php echo $draft_post_count; ?>],
                         ["Comments", <?php echo $comment_count; ?>],
                         ["Unapproved Comments", <?php echo $unapproved_comment_count; ?>],
