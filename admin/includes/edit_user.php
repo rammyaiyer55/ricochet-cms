@@ -1,58 +1,62 @@
-	
-	<?php 
-
-		if (isset($_GET['edit_user'])) {
-			$edit_user_id = $_GET['edit_user'];
-
-			$query = "SELECT * FROM users WHERE user_id = $edit_user_id";
-	        $show_data_of_user = mysqli_query($connection, $query);
-
-	        while ($row = mysqli_fetch_assoc($show_data_of_user)) {
-	            
-	            $user_id  		=  $row['user_id'];
-	            $username  		=  $row['username'];
-	            $user_password  =  $row['user_password'];
-	            $user_firstname =  $row['user_firstname'];
-	            $user_lastname  =  $row['user_lastname'];
-	            $user_email  	=  $row['user_email'];
-	            $user_image  	=  $row['user_image'];
-	            $user_role  	=  $row['user_role'];
-	        }
-
-	        if (isset($_POST['edit_user'])) {
-
-	        	$user_firstname  	= mysqli_real_escape_string($connection, $_POST['user_firstname']);
-	            $user_lastname  	= mysqli_real_escape_string($connection, $_POST['user_lastname']);
-	            $username  			= mysqli_real_escape_string($connection, $_POST['username']);
-	            $user_email  		= $_POST['user_email'];
-	            $user_password  	= $_POST['user_password'];
-	            $user_role  		= $_POST['user_role'];
-
-	        	$query  = "UPDATE users SET ";
-	    		$query .= "username = '$username', ";
-	    		$query .= "user_password = '$user_password', ";
-	    		$query .= "user_firstname = '$user_firstname', ";
-	    		$query .= "user_lastname = '$user_lastname', ";
-	    		$query .= "user_email = '$user_email', ";
-	    		$query .= "user_role = '$user_role' ";
-	    		// $query .= "user_image = '$user_image' ";
-	    		$query .= "WHERE user_id = '$edit_user_id'";
-
-	    		$update_user_query = mysqli_query($connection, $query);
-	    		if (!$update_user_query) {
-	    			die("Query Failed! " . mysqli_error($connection));
-	    		}
-
-	        }
-
-		}
-
-	?>
 
 	<div class="col-lg-2">
 		<!-- Just some space -->
 	</div>
 	<div class="col-lg-8">
+
+		<?php 
+
+			if (isset($_GET['edit_user'])) {
+				$edit_user_id = $_GET['edit_user'];
+
+				$query = "SELECT * FROM users WHERE user_id = $edit_user_id";
+		        $show_data_of_user = mysqli_query($connection, $query);
+
+		        while ($row = mysqli_fetch_assoc($show_data_of_user)) {
+		            
+		            $user_id  		=  $row['user_id'];
+		            $username  		=  $row['username'];
+		            $user_password  =  $row['user_password'];
+		            $user_firstname =  $row['user_firstname'];
+		            $user_lastname  =  $row['user_lastname'];
+		            $user_email  	=  $row['user_email'];
+		            $user_image  	=  $row['user_image'];
+		            $user_role  	=  $row['user_role'];
+		        }
+
+		        if (isset($_POST['edit_user'])) {
+
+		        	$user_firstname  	= mysqli_real_escape_string($connection, $_POST['user_firstname']);
+		            $user_lastname  	= mysqli_real_escape_string($connection, $_POST['user_lastname']);
+		            $username  			= mysqli_real_escape_string($connection, $_POST['username']);
+		            $user_email  		= $_POST['user_email'];
+		            $user_password  	= $_POST['user_password'];
+		            $user_role  		= $_POST['user_role'];
+
+		        	$query  = "UPDATE users SET ";
+		    		$query .= "username = '$username', ";
+		    		$query .= "user_password = '$user_password', ";
+		    		$query .= "user_firstname = '$user_firstname', ";
+		    		$query .= "user_lastname = '$user_lastname', ";
+		    		$query .= "user_email = '$user_email', ";
+		    		$query .= "user_role = '$user_role' ";
+		    		// $query .= "user_image = '$user_image' ";
+		    		$query .= "WHERE user_id = '$edit_user_id'";
+
+		    		$update_user_query = mysqli_query($connection, $query);
+		    		if (!$update_user_query) {
+		    			die("Query Failed! " . mysqli_error($connection));
+		    		} else {
+				    		echo "<div class='alert alert-success' role='alert'>
+										Success! User details <a href='users.php' class='alert-link'>edited</a>.
+								  </div>";
+			        }
+
+		        }
+
+			}
+
+		?>
 
 		<form action="" method="post" enctype="multipart/form-data">
 

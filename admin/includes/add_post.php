@@ -33,6 +33,10 @@
 
 	        	if (!$publish_query) {
 	        		die("Not published. Sorry! " . mysqli_error($connection));
+	        	} else {
+	        		echo "<div class='alert alert-success' role='alert'>
+  							Success! Your post is <a href='posts.php' class='alert-link'>created</a>.
+						  </div>";
 	        	}
 
 	        }
