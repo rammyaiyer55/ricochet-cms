@@ -56,7 +56,21 @@
 
                 <?php } ?>
 
-                <hr>
+                <?php 
+
+                    if (isset($_SESSION['user_role'])) {
+
+                        echo "<hr id='hr-style'>";
+                        
+                        $caught_post_id = $_GET['p_id'];
+
+                        echo "<a href='admin/posts.php?source=edit_post&p_id=$caught_post_id'><button type='button' class='btn btn-primary'>Edit Post</button></a>";
+
+                    }
+
+                ?>
+
+                <hr id="hr-style1">
 
                 <!-- Blog Comments -->
 
