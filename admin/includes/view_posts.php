@@ -6,8 +6,31 @@
 
 				?>
 
+				<form action="" method="post">
+
+				<div class="row">
+					<div class="col-lg-3 col-xs-6">
+						<div id="bulk_options_container">
+							<select class="form-control" name="" id="">
+								<option selected hidden>Select Your Option</option>
+								<option value="">Publish</option>
+								<option value="">Draft</option>
+								<option value="">Delete</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-lg-4 col-xs-6">
+						<input type="submit" name="submit" class="btn btn-success" value="Apply">
+						&nbsp;&nbsp;&nbsp;
+						<a href="posts.php?source=add_post" class="btn btn-primary">Add New Post</a>
+					</div>
+				</div>
+
+				<hr id="hr-style1">
+
 				<div class="table-responsive">
 					<table class="table table-hover table-bordered">
+
 						<thead>
 							<th>ID</th>
 							<th>AUTHOR</th>
@@ -55,7 +78,7 @@
 				                	}
 
 				                    echo "<td>$post_status</td>";
-				                    echo "<td align='center'><img src=\"../images/$post_image\" width=\"130\"></td>";
+				                    echo "<td align='center'><img src=\"../images/$post_image\" width=\"105\"></td>";
 				                    echo "<td>$post_tags</td>";
 				                    echo "<td>$post_comment_count</td>";
 				                    echo "<td>$post_date </td>";
@@ -68,4 +91,6 @@
 							?>
 						</tbody>
 					</table>
+
 				</div>
+				</form>
