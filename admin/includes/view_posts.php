@@ -6,16 +6,71 @@
 
 				?>
 
+				<?php
+
+					if (isset($_POST['checkboxArray'])) {
+						
+						foreach ($_POST['checkboxArray'] as $checkbox_post_id) {
+							
+							$bulk_option_value = $_POST['bulk_options'];
+
+							// Switch case for the selected option.
+							switch ($bulk_option_value) {
+
+								// For publishing.
+								case 'published':
+									
+									$query = "UPDATE posts SET post_status = '$bulk_option_value' WHERE post_id = $checkbox_post_id";
+
+									$update_to_published = mysqli_query($connection, $query);
+									if (!$update_to_published) {
+										die('Sorry! Query failed ' . mysqli_error($connection));
+									}
+
+									break;
+								
+								// For drafting.
+								case 'draft':
+									
+									$query = "UPDATE posts SET post_status = '$bulk_option_value' WHERE post_id = $checkbox_post_id";
+
+									$update_to_draft = mysqli_query($connection, $query);
+									if (!$update_to_draft) {
+										die('Sorry! Query failed ' . mysqli_error($connection));
+									}
+
+									break;
+
+								// For deleting.
+								case 'delete':
+									
+									$query = "DELETE FROM posts WHERE post_id = $checkbox_post_id";
+
+									$delete_bulk_post = mysqli_query($connection, $query);
+									if (!$delete_bulk_post) {
+										die('Sorry! Query failed ' . mysqli_error($connection));
+									}
+
+									break;
+
+							}
+
+						}
+
+					}
+
+				?>
+
 				<form action="" method="post">
 
 				<div class="row">
 					<div class="col-lg-3 col-xs-6">
 						<div id="bulk_options_container">
-							<select class="form-control" name="" id="">
+							<select class="form-control" name="bulk_options" id="">
 								<option selected hidden>Select Your Option</option>
-								<option value="">Publish</option>
-								<option value="">Draft</option>
-								<option value="">Delete</option>
+								<option value="published">Publish</option>
+								<option value="draft">Draft</option>
+								<option value="delete">Delete</option>
 							</select>
 						</div>
 					</div>
@@ -32,6 +87,7 @@
 					<table class="table table-hover table-bordered">
 
 						<thead>
+							<th><input type="checkbox" id="selectAllBoxes"></th>
 							<th>ID</th>
 							<th>AUTHOR</th>
 							<th>TITLE</th>
@@ -63,6 +119,9 @@
 				                    $post_comment_count  =  $row['post_comment_count'];
 
 				                    echo "<tr>";
+
+				                    // The checkboxArray[] stores the $post_id of the selected checkbox.
+				                    echo "<td><input class='checkboxes' type='checkbox' name='checkboxArray[]' value=$post_id></td>";
 				                    echo "<td>$post_id</td>";
 				                    echo "<td>$post_author</td>";
 				                    echo "<td>$post_title</td>";
