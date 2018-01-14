@@ -1,3 +1,4 @@
+	
 	<div class="col-lg-2">
 		<!-- Just some space -->
 	</div>
@@ -7,8 +8,8 @@
 
 			if(isset($_POST['publish'])) {
 	   
-	            $post_title         = mysqli_real_escape_string($connection, $_POST['title']);
-	            // $post_user         = $_POST['post_user'];
+	            $post_title			= mysqli_real_escape_string($connection, $_POST['title']);
+	            // $post_user       = $_POST['post_user'];
 	            $post_author        = mysqli_real_escape_string($connection, $_POST['author']);
 	            $post_category_id   = $_POST['post_category_id'];
 	            $post_status        = $_POST['post_status'];
@@ -20,10 +21,10 @@
 	            $post_content       = mysqli_real_escape_string($connection, $_POST['post_content']);
 	            $post_date          = date('d-m-y');
 
-	            $post_comment_count = 4;
+	            $post_comment_count = 0;
 
 	       
-	        	move_uploaded_file($post_image_temp, "../images/$post_image" );
+	        	move_uploaded_file($post_image_temp, "../images/$post_image");
 
 	        	$query  = "INSERT INTO posts(post_category_id, post_title, post_author, post_date, post_image, post_content, post_tags, post_comment_count, post_status) ";
 	        	$query .= "VALUES ($post_category_id, '$post_title', '$post_author', now(), '$post_image', '$post_content', '$post_tags', $post_comment_count, '$post_status')";
@@ -32,6 +33,10 @@
 
 	        	if (!$publish_query) {
 	        		die("Not published. Sorry! " . mysqli_error($connection));
+	        	} else {
+	        		echo "<div class='alert alert-success' role='alert'>
+  							Success! Your post is <a href='posts.php' class='alert-link'>created</a>.
+						  </div>";
 	        	}
 
 	        }
@@ -48,10 +53,24 @@
 			<div class="form-group">
 				<label for="post-category">Category: &nbsp;</label>
 				<select name="post_category_id" id="post-category">
-					<option selected hidden>Select ID</option>
-					<option>10</option>
-					<option>20</option>
-					<option>30</option>
+
+					<option selected hidden>Select</option>
+
+					<?php 
+
+						$query = "SELECT * FROM categories";
+						$show_categories_in_select_tag = mysqli_query($connection, $query);
+						if (!$show_categories_in_select_tag) {
+							die("Query Failed! " . mysqli_error($connection));
+						}
+						while ($row = mysqli_fetch_assoc($show_categories_in_select_tag)) {
+							$category_id 	= $row['cat_id'];
+							$category_title = $row['cat_title'];
+							echo "<option value='$category_id'>" . $category_title . "</option>";
+						}
+
+					?>
+
 				</select>
 			</div>
 

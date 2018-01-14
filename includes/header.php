@@ -1,3 +1,5 @@
+<?php ob_start(); ?>    <!-- Output Buffer -->
+<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html lang="en">

@@ -1,4 +1,4 @@
-<?php include("../includes/db.php"); ?>
+
 <?php include("includes/admin_header.php"); ?>
 
     <div id="wrapper">
@@ -13,12 +13,24 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            All Posts
+                            Posts
                             <!-- <small> &nbsp;Subheading</small> -->
                         </h1>
                         <ol class="breadcrumb">
                             <li class="active">
-                                <i class="fa fa-fw fa-edit"></i>  <a>View All Posts</a>
+
+                            	<?php 
+
+                            		if (isset($_GET['source']) == 'add_post') {
+                            			echo "<i class='fa fa-fw fa-edit'></i>  <a>Add Post</a>";
+                            		} else {
+
+                            			echo "<i class='fa fa-fw fa-edit'></i>  <a>View All Posts</a>";
+
+                            		}
+
+                            	?>
+
                             </li>
                         </ol>
                 <!-- Category Main Title -->						
@@ -40,6 +52,10 @@
 					switch ($source) {
 						case 'add_post':
 							include('includes/add_post.php');
+							break;
+
+						case 'edit_post':
+							include('includes/edit_post.php');
 							break;
 						
 						default:

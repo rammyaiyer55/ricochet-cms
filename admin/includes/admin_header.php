@@ -1,6 +1,17 @@
-
+<?php include("../includes/db.php"); ?>
 <?php include("functions.php"); ?>
 <?php ob_start(); ?>    <!-- Output Buffer -->
+<?php session_start(); ?>
+
+<?php 
+
+    if (!isset($_SESSION['user_role'])) {
+            
+        header("Location: ../index.php");
+
+    }
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -29,6 +40,15 @@
 
     <!-- Google Fonts CDN -->
     <link href="https://fonts.googleapis.com/css?family=Roboto|Ubuntu:400,700" rel="stylesheet">
+
+    <!-- Google Charts CDN -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <!-- TinyMCE WYSIWYG editor -->
+    <script type="text/javascript" src="js/tinymce/tinymce.min.js"></script>
+
+    <!-- Custom Script for TinyMCE editor -->
+    <script type="text/javascript" src="js/scripts.js"></script>
 
 </head>
 

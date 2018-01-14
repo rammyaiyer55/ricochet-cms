@@ -18,30 +18,32 @@
             <!-- /.input-group -->
         </div>
 
-        <!-- <div class="well">
+        <div class="well">
             <h4>Login</h4>
-            <div class="input-group" style="margin-top: 15px;">
-                <input type="text" name="username" class="form-control">
-                <span class="input-group-btn">
-                    <button class="btn btn-default" type="button">
-                        <span class="glyphicon glyphicon-user"></span>
+            <form action="includes/login.php" method="post">
+                <div class="input-group" style="margin-top: 15px;">
+                    <input type="text" name="username" placeholder="Enter username" class="form-control">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">
+                            <span class="glyphicon glyphicon-user"></span>
+                        </button>
+                    </span>
+                </div>
+                <div class="input-group" style="margin-top: 12px;">
+                    <input type="password" name="password" placeholder="Enter password" class="form-control">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">
+                            <span class="glyphicon glyphicon-lock"></span>
+                        </button>
+                    </span>
+                </div>
+                <div style="margin-top: 15px;">
+                    <button class="btn btn-primary" name="login" type="submit">
+                        Login
                     </button>
-                </span>
-            </div>
-            <div class="input-group" style="margin-top: 12px;">
-                <input type="text" name="username" class="form-control">
-                <span class="input-group-btn">
-                    <button class="btn btn-default" type="button">
-                        <span class="glyphicon glyphicon-lock"></span>
-                    </button>
-                </span>
-            </div>
-            <div style="margin-top: 15px;">
-                <button class="btn btn-primary">
-                    Login
-                </button>
-            </div>
-        </div> -->
+                </div>
+            </form>
+        </div>
 
         <!-- Blog Categories Well -->
         <div class="well">
@@ -55,12 +57,13 @@
                             $show_data_from_categories = mysqli_query($connection, $query);
 
                             while ($row = mysqli_fetch_assoc($show_data_from_categories)) {
+                                $cat_id    = $row['cat_id'];
                                 $cat_title = $row['cat_title'];
 
                         ?>
 
                         <li>
-                            <h5><a href="#"><?php echo $cat_title; ?></a></h5>
+                            <h5><a href="categories.php?cat_id=<?php echo $cat_id; ?>"><?php echo $cat_title; ?></a></h5>
                         </li>
 
                         <?php } ?>
