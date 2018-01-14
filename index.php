@@ -21,7 +21,7 @@
 
             <?php 
 
-                $query = "SELECT * FROM posts WHERE post_status = 'published'";
+                $query = "SELECT * FROM posts WHERE post_status = 'published' ORDER BY post_id DESC";
                 $show_data_from_posts = mysqli_query($connection, $query);
 
                 while ($row = mysqli_fetch_assoc($show_data_from_posts)) {
