@@ -33,9 +33,22 @@
 		            $user_password  	= $_POST['user_password'];
 		            $user_role  		= $_POST['user_role'];
 
+		            // Query for decrypting password.
+		            $query = "SELECT randSalt FROM users";
+                    $select_randSalt_query = mysqli_query($connection, $query);
+
+                    if (!$select_randSalt_query) {
+                        die('Sorry! Query failed. ' . mysqli_error($connection));
+                    }
+
+                    $row  =  mysqli_fetch_assoc($select_randSalt_query);
+                    $salt =  $row['randSalt'];
+
+                    $hashed_password = crypt($user_password, $salt);
+
 		        	$query  = "UPDATE users SET ";
 		    		$query .= "username = '$username', ";
-		    		$query .= "user_password = '$user_password', ";
+		    		$query .= "user_password = '$hashed_password', ";
 		    		$query .= "user_firstname = '$user_firstname', ";
 		    		$query .= "user_lastname = '$user_lastname', ";
 		    		$query .= "user_email = '$user_email', ";

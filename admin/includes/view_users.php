@@ -65,7 +65,7 @@
 				                    echo "<td><a href='users.php?change_to_admin=$user_id' id='text-link'>Admin</a>";
 				                    echo "<td><a href='users.php?change_to_subscriber=$user_id' id='text-link'>Subscriber</a>";
 				                    echo "<td><a href='users.php?source=edit_user&edit_user=$user_id' id='text-link'>Edit</a>";
-				                    echo "<td><a href='users.php?delete=$user_id' id='text-link'>Delete</a>";
+				                    echo "<td><a onClick=\"javascript: return confirm('Are you sure you want to delete?');\" href='users.php?delete=$user_id' id='text-link'>Delete</a>";
 				                    echo "</tr>";
 
 				                }

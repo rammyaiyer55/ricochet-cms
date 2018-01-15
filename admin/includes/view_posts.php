@@ -144,7 +144,7 @@
 				                    echo "<td>$post_date </td>";
 				                    echo "<td><a href='../post.php?p_id=$post_id' id='text-link'>View</td>";
 				                    echo "<td><a href='posts.php?source=edit_post&p_id=$post_id' id='text-link'>Edit</td>";
-				                    echo "<td><a href='posts.php?delete=$post_id' id='text-link'>Delete</a>";
+				                    echo "<td><a onClick=\"javascript: return confirm('Are you sure you want to delete?');\" href='posts.php?delete=$post_id' id='text-link'>Delete</a>";
 				                    echo "</tr>";
 
 				                }

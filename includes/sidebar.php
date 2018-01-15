@@ -7,7 +7,7 @@
             <h4>Blog Search</h4>
             <form action="search.php" method="post">
                 <div class="input-group" style="margin-top: 15px;">
-                    <input type="text" name="search" class="form-control">
+                    <input type="text" placeholder="Type here" name="search" class="form-control">
                     <span class="input-group-btn">
                         <button class="btn btn-default" name="submit" type="submit">
                             <span class="glyphicon glyphicon-search"></span>
