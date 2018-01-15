@@ -90,7 +90,6 @@
 				<label for="post-status">Post Status: &nbsp;</label>
 				<select name="post_status" id="post-status">
 					<option selected hidden>Select your option</option>
-					<option value="approved">Approved</option>
 					<option value="published">Published</option>
 					<option value="draft">Draft</option>
 				</select>
