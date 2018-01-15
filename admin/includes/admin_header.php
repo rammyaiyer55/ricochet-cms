@@ -47,9 +47,6 @@
     <!-- TinyMCE WYSIWYG editor -->
     <script type="text/javascript" src="js/tinymce/tinymce.min.js"></script>
 
-    <!-- Custom Script for TinyMCE editor -->
-    <script type="text/javascript" src="js/scripts.js"></script>
-
 </head>
 
 <body>
