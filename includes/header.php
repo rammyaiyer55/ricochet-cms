@@ -17,6 +17,9 @@
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Custom Icons -->
+    <link href="admin/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
     <!-- Google Fonts CDN -->
     <link href="https://fonts.googleapis.com/css?family=Roboto|Ubuntu:400,700" rel="stylesheet">
 
