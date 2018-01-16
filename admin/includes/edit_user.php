@@ -107,7 +107,7 @@
 
 			<div class="form-group">
 				<label for="password">Password: &nbsp;</label>
-				<input type="password" value="<?php echo $user_password; ?>" class="form-control" name="user_password" id="password">
+				<input type="password" value="" placeholder="Enter new password" class="form-control" name="user_password" id="password">
 			</div>
 
 			<div class="form-group" style="margin-top: 25px;">

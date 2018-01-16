@@ -24,7 +24,12 @@
 
             <?php 
 
-                $query = "SELECT * FROM posts WHERE post_status = 'published' ORDER BY post_id DESC";
+                if (isset($_GET['p_id'])) {
+                    $caught_id     =  $_GET['p_id'];
+                    $caught_author =  $_GET['author'];
+                }
+
+                $query = "SELECT * FROM posts WHERE post_author = '$caught_author' ORDER BY post_id DESC";
                 $show_data_from_posts = mysqli_query($connection, $query);
 
                 while ($row = mysqli_fetch_assoc($show_data_from_posts)) {
@@ -34,7 +39,6 @@
                     $post_author    =   $row['post_author'];
                     $post_date      =   $row['post_date'];
                     $post_image     =   $row['post_image'];
-                    $post_status    =   $row['post_status'];
                     $post_content   =   substr($row['post_content'], 0, 500);
 
             ?>
@@ -44,12 +48,12 @@
                     <a href="post.php?p_id=<?php echo $post_id; ?>"><?php echo $post_title; ?></a>
                 </h2>
                 <p class="lead">
-                    by <a href="author_post.php?author=<?php echo $post_author; ?>&p_id=<?php echo $post_id; ?>"><?php echo $post_author; ?></a>
+                    by <a><?php echo $post_author; ?></a>
                 </p>
                 <p><span class="glyphicon glyphicon-time"></span> <?php echo $post_date; ?></p>
                 <hr>
                 <a href="post.php?p_id=<?php echo $post_id; ?>">
-                <img class="img-responsive" src="images/<?php echo $post_image; ?>" alt="">
+                    <img class="img-responsive" src="images/<?php echo $post_image; ?>" alt="">
                 </a>
                 <hr>
                 <p><?php echo $post_content; ?></p><br>
@@ -58,13 +62,7 @@
                 <br><br>
                 <hr>
 
-                <?php
-
-                    }
-
-                ?>
-
-                <hr>
+                <?php } ?>
 
                 <!-- Pager -->
                 <ul class="pager">

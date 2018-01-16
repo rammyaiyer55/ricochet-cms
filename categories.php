@@ -25,7 +25,7 @@
                     $caught_cat_id  = $_GET['cat_id'];
                 }
 
-                $query = "SELECT * FROM posts WHERE post_category_id = $caught_cat_id";
+                $query = "SELECT * FROM posts WHERE post_category_id = $caught_cat_id ORDER BY post_id DESC";
                 $show_data_from_posts = mysqli_query($connection, $query);
 
                 while ($row = mysqli_fetch_assoc($show_data_from_posts)) {
@@ -46,14 +46,16 @@
                     <a href="post.php?p_id=<?php echo $post_id; ?>"><?php echo $post_title; ?></a>
                 </h2>
                 <p class="lead">
-                    by <a href="index.php"><?php echo $post_author; ?></a>
+                    by <a href="author_post.php?author=<?php echo $post_author; ?>&p_id=<?php echo $post_id; ?>"><?php echo $post_author; ?></a>
                 </p>
                 <p><span class="glyphicon glyphicon-time"></span> <?php echo $post_date; ?></p>
                 <hr>
-                <img class="img-responsive" src="images/<?php echo $post_image; ?>" alt="">
+                <a href="post.php?p_id=<?php echo $post_id; ?>">
+                    <img class="img-responsive" src="images/<?php echo $post_image; ?>" alt="">
+                </a>
                 <hr>
                 <p><?php echo $post_content; ?></p><br>
-                <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+                <a class="btn btn-primary" href="post.php?p_id=<?php echo $post_id; ?>">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 
                 <?php } ?>
 

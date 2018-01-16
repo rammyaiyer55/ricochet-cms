@@ -45,9 +45,11 @@
             </form>
         </div>
 
+        <hr id="hr-style">
+
         <!-- Blog Categories Well -->
         <div class="well">
-            <h4 style="margin-bottom: 25px;">Blog Categories</h4>
+            <h4 style="margin-bottom: 20px;">Blog Categories</h4>
             <div class="row">
                 <div class="col-lg-12">
                     <ul class="list-unstyled">
@@ -63,7 +65,7 @@
                         ?>
 
                         <li>
-                            <h5><a href="categories.php?cat_id=<?php echo $cat_id; ?>"><?php echo $cat_title; ?></a></h5>
+                            <h5 style="font-size: 1.05em;"><a href="categories.php?cat_id=<?php echo $cat_id; ?>"><?php echo $cat_title; ?></a></h5>
                         </li>
 
                         <?php } ?>

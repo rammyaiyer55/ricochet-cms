@@ -25,7 +25,7 @@
                     $caught_id  = $_GET['p_id'];
                 }
 
-                $query = "SELECT * FROM posts WHERE post_id = $caught_id";
+                $query = "SELECT * FROM posts WHERE post_id = $caught_id ORDER BY post_id DESC";
                 $show_data_from_posts = mysqli_query($connection, $query);
 
                 while ($row = mysqli_fetch_assoc($show_data_from_posts)) {
