@@ -35,6 +35,9 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="css/admin.css">
 
+    <!-- Loader CSS -->
+    <link rel="stylesheet" type="text/css" href="css/loader.css">
+
     <!-- Custom Icons -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
