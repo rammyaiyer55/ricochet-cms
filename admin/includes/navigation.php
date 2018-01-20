@@ -1,24 +1,28 @@
 <?php
     
     // Displays number of users online.
-    $session =  session_id();
-    $time    =  time();
+    // if (isset($_GET['onlineusers'])) {
+        
+        $session =  session_id();
+        $time    =  time();
 
-    $timeout_in_seconds = 60;
-    $timeout = $time - $timeout_in_seconds;
+        $timeout_in_seconds = 30;
+        $timeout = $time - $timeout_in_seconds;
 
-    $query = "SELECT * FROM users_online WHERE session = '$session'";
-    $insert_user_online_query = mysqli_query($connection, $query);
-    $count = mysqli_num_rows($insert_user_online_query);
+        $query = "SELECT * FROM users_online WHERE session = '$session'";
+        $insert_user_online_query = mysqli_query($connection, $query);
+        $count = mysqli_num_rows($insert_user_online_query);
 
-    if ($count == NULL) {
-        mysqli_query($connection, "INSERT INTO users_online(session, time) VALUES('$session', '$time')");
-    } else {
-        mysqli_query($connection, "UPDATE users_online SET time = '$time' WHERE session = '$session'");
-    }
+        if ($count == NULL) {
+            mysqli_query($connection, "INSERT INTO users_online(session, time) VALUES('$session', '$time')");
+        } else {
+            mysqli_query($connection, "UPDATE users_online SET time = '$time' WHERE session = '$session'");
+        }
 
-    $users_online_query = mysqli_query($connection, "SELECT * FROM users_online WHERE time > '$timeout'");
-    $count_users = mysqli_num_rows($users_online_query);
+        $users_online_query = mysqli_query($connection, "SELECT * FROM users_online WHERE time > '$timeout'");
+        $count_users = mysqli_num_rows($users_online_query);
+
+    // }
     
 ?>
 
@@ -36,7 +40,7 @@
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li>
-                    <a class="" style="font-size: 1.02em;">Users Online: &nbsp;<?php echo $count_users; ?></a>
+                    <a class="" style="font-size: 1.02em;">Users Online: &nbsp;<?php echo $count_users; ?><!-- <span class="usersonline"> --></span></a>
                 </li>
                 <li class="dropdown">
                     <a href="" class="dropdown-toggle" data-toggle="dropdown" style="font-size: 1.02em;"><i class="fa fa-user"></i>&nbsp; <?php echo $_SESSION['username']; ?> <b class="caret"></b></a>
