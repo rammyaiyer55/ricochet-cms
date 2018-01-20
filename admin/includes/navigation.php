@@ -1,3 +1,26 @@
+<?php
+    
+    // Displays number of users online.
+    $session =  session_id();
+    $time    =  time();
+
+    $timeout_in_seconds = 60;
+    $timeout = $time - $timeout_in_seconds;
+
+    $query = "SELECT * FROM users_online WHERE session = '$session'";
+    $insert_user_online_query = mysqli_query($connection, $query);
+    $count = mysqli_num_rows($insert_user_online_query);
+
+    if ($count == NULL) {
+        mysqli_query($connection, "INSERT INTO users_online(session, time) VALUES('$session', '$time')");
+    } else {
+        mysqli_query($connection, "UPDATE users_online SET time = '$time' WHERE session = '$session'");
+    }
+
+    $users_online_query = mysqli_query($connection, "SELECT * FROM users_online WHERE time > '$timeout'");
+    $count_users = mysqli_num_rows($users_online_query);
+    
+?>
 
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -12,14 +35,17 @@
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
+                <li>
+                    <a class="" style="font-size: 1.02em;">Users Online: &nbsp;<?php echo $count_users; ?></a>
+                </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>&nbsp; <?php echo $_SESSION['username']; ?> &nbsp;<b class="caret"></b></a>
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown" style="font-size: 1.02em;"><i class="fa fa-user"></i>&nbsp; <?php echo $_SESSION['username']; ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+                            <a href="profile.php"><i class="fa fa-fw fa-user"></i> Profile</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
+                            <a href="../index.php" target="_blank"><i class="fa fa-fw fa-home"></i> Home Page</a>
                         </li>
                         <li class="divider"></li>
                         <li>

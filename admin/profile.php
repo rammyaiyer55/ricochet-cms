@@ -65,7 +65,7 @@
         <!-- Navigation -->
         <?php include("includes/navigation.php"); ?>
 
-        <div id="page-wrapper" style="margin-top: 69px;">
+        <div id="page-wrapper">
             <div class="container-fluid">
 
                 <!-- Page Heading -->
@@ -126,7 +126,7 @@
 						</div>
 
 						<div class="form-group">
-							<label for="password">Password: &nbsp;</label>
+							<label for="password">Change Password: &nbsp;</label>
 							<input type="password" value="" placeholder="Enter new password" class="form-control" name="user_password" id="password">
 						</div>
 

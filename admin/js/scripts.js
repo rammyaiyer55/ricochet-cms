@@ -19,10 +19,12 @@ $(document).ready(function () {
 });
 
 // Loader script.
+/*
 var div_box = "<div id='load-screen'><div id='loading'></div></div>";
 
 $("body").prepend(div_box);
 
-$('#load-screen').delay(2000).fadeOut(1000, function () {
+$('#load-screen').delay(450).fadeOut(550, function () {
 	$(this).remove();
 });
+*/

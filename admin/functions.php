@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 	function insert_into_categories() {
 
@@ -84,9 +84,9 @@
 			$delete_query = mysqli_query($connection, $query); 
 			if (!$delete_query) {
 				die("Post cannot be deleted. Query failed! " . mysqli_error($connection));
+			} else {
+				header("Location: posts.php");
 			}
-
-			// header("Location: view_posts.php");
 
 		}
 

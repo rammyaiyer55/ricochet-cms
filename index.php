@@ -24,7 +24,37 @@
 
             <?php 
 
-                $query = "SELECT * FROM posts WHERE post_status = 'published' ORDER BY post_id DESC";
+                // Pagination query.
+                $post_count_query = "SELECT * FROM posts";
+                $find_count = mysqli_query($connection, $post_count_query);
+                $count = mysqli_num_rows($find_count);
+
+                // Displays number of posts per page.
+                $per_page = 5;
+
+                // Round the count to the next highest value.
+                $count = ceil($count / $per_page);
+
+
+                // Pagination math.
+
+                if (isset($_GET['page'])) {
+                    $page = $_GET['page'];
+                } else {
+                    $page = "";
+                }
+
+                if ($page == "" || $page == 1) {
+                    $page_inc = 0;
+                } else {
+                    $page_inc = ($page * $per_page) - $per_page;
+                }
+
+            ?>
+
+            <?php 
+
+                $query = "SELECT * FROM posts WHERE post_status = 'published' ORDER BY post_id DESC LIMIT $page_inc, $per_page";
                 $show_data_from_posts = mysqli_query($connection, $query);
 
                 while ($row = mysqli_fetch_assoc($show_data_from_posts)) {
@@ -68,12 +98,25 @@
 
                 <!-- Pager -->
                 <ul class="pager">
-                    <li class="previous">
-                        <a href="#">&larr; Older</a>
-                    </li>
-                    <li class="next">
-                        <a href="#">Newer &rarr;</a>
-                    </li>
+                    
+                    <?php 
+
+                        for ($i = 1; $i <= $count; $i++) { 
+                            
+                            if ($i == $page) {
+                                
+                                echo "<strong><li><a href='index.php?page=$i' style='font-size: 1.05em;' class = 'active_link'>$i</a></li></strong> ";
+
+                            } else {
+
+                                echo "<strong><li><a href='index.php?page=$i' style='font-size: 1.05em;'>$i</a></li></strong> ";
+
+                            }
+
+                        }
+
+                    ?>
+
                 </ul>
 
             </div>

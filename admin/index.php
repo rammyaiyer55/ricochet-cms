@@ -5,7 +5,7 @@
         <!-- Navigation -->
         <?php include("includes/navigation.php"); ?>
 
-        <div id="page-wrapper" style="margin-top: 69px;">
+        <div id="page-wrapper">
             <div class="container-fluid">
 
                 <!-- Page Heading -->

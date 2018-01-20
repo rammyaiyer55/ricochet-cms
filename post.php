@@ -23,6 +23,12 @@
 
                 if (isset($_GET['p_id'])) {
                     $caught_id  = $_GET['p_id'];
+                
+                // Getting total view count.
+                $view_query = "UPDATE posts SET post_views_count =post_views_count + 1 WHERE post_id = $caught_id";
+                $update_view_query = mysqli_query($connection, $view_query);
+                if (!$update_view_query) {
+                    die("Sorry! Query failed. " . mysqli_error($connection));
                 }
 
                 $query = "SELECT * FROM posts WHERE post_id = $caught_id ORDER BY post_id DESC";
@@ -54,7 +60,18 @@
                 <hr>
                 <p><?php echo $post_content; ?></p><br>
 
-                <?php } ?>
+                <?php
+
+                    }
+
+                } else {
+
+                    // Redirect back to home page.
+                    header("Location: index.php");
+
+                }
+
+                ?>
 
                 <?php 
 
@@ -173,16 +190,6 @@
                 <br>
 
                 <hr>
-
-                <!-- Pager -->
-                <ul class="pager">
-                    <li class="previous">
-                        <a href="#">&larr; Older</a>
-                    </li>
-                    <li class="next">
-                        <a href="#">Newer &rarr;</a>
-                    </li>
-                </ul>
 
             </div>
 
