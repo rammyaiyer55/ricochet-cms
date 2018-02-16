@@ -10,7 +10,7 @@
 	   
 	            $post_title			= mysqli_real_escape_string($connection, $_POST['title']);
 	            // $post_user       = $_POST['post_user'];
-	            $post_author        = mysqli_real_escape_string($connection, $_POST['author']);
+	            $post_user         = mysqli_real_escape_string($connection, $_POST['post_user']);
 	            $post_category_id   = $_POST['post_category_id'];
 	            $post_status        = $_POST['post_status'];
 	    
@@ -26,8 +26,8 @@
 	       
 	        	move_uploaded_file($post_image_temp, "../images/$post_image");
 
-	        	$query  = "INSERT INTO posts(post_category_id, post_title, post_author, post_date, post_image, post_content, post_tags, post_comment_count, post_status) ";
-	        	$query .= "VALUES ($post_category_id, '$post_title', '$post_author', now(), '$post_image', '$post_content', '$post_tags', $post_comment_count, '$post_status')";
+	        	$query  = "INSERT INTO posts(post_category_id, post_title, post_user, post_date, post_image, post_content, post_tags, post_comment_count, post_status) ";
+	        	$query .= "VALUES ($post_category_id, '$post_title', '$post_user', now(), '$post_image', '$post_content', '$post_tags', $post_comment_count, '$post_status')";
 
 	        	$publish_query = mysqli_query($connection, $query);
 
@@ -74,17 +74,34 @@
 				</select>
 			</div>
 
-			<!-- <div class="form-group">
-				<label for="users">Users: &nbsp;</label>
-				<select name="post_user" id="">
-					<option value=''></option>
-				</select>
-			</div> -->
-
 			<div class="form-group">
+				<label for="post-author">Post User: &nbsp;</label>
+				<select name="post_user" id="post-author">
+
+					<option selected hidden>Select</option>
+
+					<?php 
+
+						$user_query = "SELECT * FROM users";
+						$select_users = mysqli_query($connection, $user_query);
+						if (!$select_users) {
+							die("Query Failed! " . mysqli_error($connection));
+						}
+						while ($row = mysqli_fetch_assoc($select_users)) {
+							$user_id 	= $row['user_id'];
+							$username 	= $row['username'];
+							echo "<option value='$username'>" . $username . "</option>";
+						}
+
+					?>
+
+				</select>
+			</div>
+
+			<!-- <div class="form-group">
 				<label for="post-author">Post Author: &nbsp;</label>
 				<input type="text" class="form-control" name="author" id="post-author">
-			</div>
+			</div> -->
 
 			<div class="form-group">
 				<label for="post-status">Post Status: &nbsp;</label>

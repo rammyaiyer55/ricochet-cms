@@ -145,7 +145,7 @@
 						<thead>
 							<th><input type="checkbox" id="selectAllBoxes"></th>
 							<th>ID</th>
-							<th>AUTHOR</th>
+							<th>USER</th>
 							<th>TITLE</th>
 							<th>CATEGORY</th>
 							<th>STATUS</th>
@@ -169,6 +169,7 @@
 				                    $post_id 			 =  $row['post_id'];
 				                    $post_title     	 =  $row['post_title'];
 				                    $post_author    	 =  $row['post_author'];
+				                    $post_user			 =  $row['post_user'];
 				                    $post_category_id	 =  $row['post_category_id'];
 				                    $post_date      	 =  $row['post_date'];
 				                    $post_image     	 =  $row['post_image'];
@@ -182,7 +183,14 @@
 				                    // The checkboxArray[] stores the $post_id of the selected checkbox.
 				                    echo "<td><input class='checkboxes' type='checkbox' name='checkboxArray[]' value=$post_id></td>";
 				                    echo "<td>$post_id</td>";
-				                    echo "<td>$post_author</td>";
+
+				                    if (!empty($post_author)) {
+				                    	echo "<td>$post_author</td>";
+				                    } elseif (!empty($post_user)) {
+				                    	echo "<td>$post_user</td>";
+				                    }
+				                    
+
 				                    echo "<td>$post_title</td>";
 
 				                    $query = "SELECT * FROM categories WHERE cat_id = '$post_category_id'";

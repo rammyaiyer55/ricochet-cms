@@ -1,5 +1,14 @@
 <?php
 
+	// Escape the value to prevent a hack.
+	function escape($string) {
+
+		global $connection;
+
+		return mysqli_real_escape_string($connection, trim($string));
+
+	}
+
 	function insert_into_categories() {
 
 		global $connection;
